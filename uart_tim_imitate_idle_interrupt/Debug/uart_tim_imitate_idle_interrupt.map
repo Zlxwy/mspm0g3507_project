@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Sat Jun 14 00:29:29 2025
+>> Linked Sat Jun 14 03:53:55 2025
 
 OUTPUT FILE NAME:   <uart_tim_imitate_idle_interrupt.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000031a1
@@ -11,7 +11,7 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00020000  00003980  0001c680  R  X
+  FLASH                 00000000   00020000  00003958  0001c6a8  R  X
   SRAM                  20200000   00008000  00000a57  000075a9  RW X
   BCR_CONFIG            41c00000   00000080  00000000  00000080  R   
   BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
@@ -21,11 +21,12 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00003980   00003980    r-x
+00000000    00000000    00003408   00003408    r-x
   00000000    00000000    000000c0   000000c0    r-- .intvecs
-  000000c0    000000c0    00003350   00003350    r-x .text
-  00003410    00003410    00000190   00000190    r-- .rodata
-  000035a0    000035a0    000003e0   000003e0    r-- .cinit
+  000000c0    000000c0    00003348   00003348    r-x .text
+00003410    00003410    00000550   00000550    r--
+  00003410    00003410    00000170   00000170    r-- .rodata
+  00003580    00003580    000003e0   000003e0    r-- .cinit
 20200000    20200000    00000859   00000000    rw-
   20200000    20200000    000005fa   00000000    rw- .data
   202005fc    202005fc    0000025d   00000000    rw- .bss
@@ -41,7 +42,7 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    000000c0     
                   00000000    000000c0     startup_mspm0g350x_ticlang.o (.intvecs)
 
-.text      0    000000c0    00003350     
+.text      0    000000c0    00003348     
                   000000c0    000009d0     libc.a : _printfi.c.obj (.text:__TI_printfi)
                   00000a90    0000096c     OLED.o (.text.OLED_Init)
                   000013fc    00000310     OLED.o (.text.OLED_ShowChar)
@@ -105,58 +106,59 @@ section   page    origin      length       input sections
                   00003214    00000022     libc.a : memccpy.c.obj (.text.memccpy)
                   00003236    00000002     --HOLE-- [fill = 0]
                   00003238    00000020     driverlib.a : dl_uart.o (.text.DL_UART_transmitDataBlocking)
-                  00003258    00000020     ch340.o (.text.get_ch340_TC_flag)
-                  00003278    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
-                  00003296    00000002     --HOLE-- [fill = 0]
-                  00003298    0000001c     driverlib.a : dl_timer.o (.text.DL_Timer_setClockConfig)
-                  000032b4    0000001c     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
-                  000032d0    0000001c     ch340.o (.text.ch340_init)
-                  000032ec    00000018     libc.a : vsprintf.c.obj (.text._outs)
-                  00003304    00000016            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset)
-                  0000331a    00000002     --HOLE-- [fill = 0]
-                  0000331c    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
-                  00003330    00000014     libc.a : _printfi.c.obj (.text.strchr)
-                  00003344    00000012     driverlib.a : dl_uart.o (.text.DL_UART_setClockConfig)
-                  00003356    00000012     libc.a : copy_decompress_none.c.obj (.text:decompress:none)
-                  00003368    00000010            : wcslen.c.obj (.text.wcslen)
-                  00003378    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
-                  00003386    0000000e     libc.a : _printfi.c.obj (.text.strlen)
-                  00003394    0000000c     delay.o (.text.delay_init)
-                  000033a0    0000000c     ch340.o (.text.get_ch340_rx_len)
-                  000033ac    0000000a     driverlib.a : dl_common.o (.text.DL_Common_delayCycles)
-                  000033b6    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
-                  000033c0    00000010     libclang_rt.builtins.a : adddf3.S.obj (.tramp.__aeabi_dsub.1)
-                  000033d0    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_1)
-                  000033da    0000000a            : vsprintf.c.obj (.text._outc)
-                  000033e4    00000008            : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
-                  000033ec    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
-                  000033f4    00000008     ch340.o (.text.get_ch340_rx_package)
-                  000033fc    00000006     libc.a : exit.c.obj (.text:abort)
-                  00003402    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
-                  00003406    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
-                  0000340a    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
-                  0000340e    00000002     --HOLE-- [fill = 0]
+                  00003258    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
+                  00003276    00000002     --HOLE-- [fill = 0]
+                  00003278    0000001c     driverlib.a : dl_timer.o (.text.DL_Timer_setClockConfig)
+                  00003294    0000001c     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
+                  000032b0    0000001c     ch340.o (.text.ch340_init)
+                  000032cc    00000018     libc.a : vsprintf.c.obj (.text._outs)
+                  000032e4    00000018     ch340.o (.text.get_ch340_TC_flag)
+                  000032fc    00000016     libc.a : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset)
+                  00003312    00000002     --HOLE-- [fill = 0]
+                  00003314    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  00003328    00000014     libc.a : _printfi.c.obj (.text.strchr)
+                  0000333c    00000012     driverlib.a : dl_uart.o (.text.DL_UART_setClockConfig)
+                  0000334e    00000012     libc.a : copy_decompress_none.c.obj (.text:decompress:none)
+                  00003360    00000010            : wcslen.c.obj (.text.wcslen)
+                  00003370    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  0000337e    0000000e     libc.a : _printfi.c.obj (.text.strlen)
+                  0000338c    0000000c     delay.o (.text.delay_init)
+                  00003398    0000000c     ch340.o (.text.get_ch340_rx_len)
+                  000033a4    0000000a     driverlib.a : dl_common.o (.text.DL_Common_delayCycles)
+                  000033ae    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
+                  000033b8    00000010     libclang_rt.builtins.a : adddf3.S.obj (.tramp.__aeabi_dsub.1)
+                  000033c8    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_1)
+                  000033d2    0000000a            : vsprintf.c.obj (.text._outc)
+                  000033dc    00000008            : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  000033e4    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  000033ec    00000008     ch340.o (.text.get_ch340_rx_pack)
+                  000033f4    00000006     libc.a : exit.c.obj (.text:abort)
+                  000033fa    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
+                  000033fe    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
+                  00003402    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  00003406    00000002     --HOLE-- [fill = 0]
 
-.cinit     0    000035a0    000003e0     
-                  000035a0    000003b6     (.cinit..data.load) [load image, compression = lzss]
-                  00003956    00000002     --HOLE-- [fill = 0]
-                  00003958    0000000c     (__TI_handler_table)
-                  00003964    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  0000396c    00000010     (__TI_cinit_table)
-                  0000397c    00000004     --HOLE-- [fill = 0]
+.cinit     0    00003580    000003e0     
+                  00003580    000003b6     (.cinit..data.load) [load image, compression = lzss]
+                  00003936    00000002     --HOLE-- [fill = 0]
+                  00003938    0000000c     (__TI_handler_table)
+                  00003944    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000394c    00000010     (__TI_cinit_table)
+                  0000395c    00000004     --HOLE-- [fill = 0]
 
-.rodata    0    00003410    00000190     
+.rodata    0    00003410    00000170     
                   00003410    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
-                  00003511    00000037     empty.o (.rodata.str1.254342170260855183.1)
-                  00003548    00000014     ti_msp_dl_config.o (.rodata.gTIMER_UART_CH340TimerConfig)
-                  0000355c    00000011     libc.a : _printfi.c.obj (.rodata.str1.10348868589481759720.1)
-                  0000356d    00000011            : _printfi.c.obj (.rodata.str1.15363888844622738466.1)
-                  0000357e    00000010     empty.o (.rodata.str1.9517790425240694019.1)
-                  0000358e    0000000a     ti_msp_dl_config.o (.rodata.gUART_CH340Config)
-                  00003598    00000003     ti_msp_dl_config.o (.rodata.gTIMER_UART_CH340ClockConfig)
-                  0000359b    00000002     ti_msp_dl_config.o (.rodata.gI2C_OLEDClockConfig)
-                  0000359d    00000002     ti_msp_dl_config.o (.rodata.gUART_CH340ClockConfig)
-                  0000359f    00000001     --HOLE-- [fill = 0]
+                  00003511    00000003     ti_msp_dl_config.o (.rodata.gTIMER_UART_CH340ClockConfig)
+                  00003514    00000014     ti_msp_dl_config.o (.rodata.gTIMER_UART_CH340TimerConfig)
+                  00003528    00000011     libc.a : _printfi.c.obj (.rodata.str1.10348868589481759720.1)
+                  00003539    00000011            : _printfi.c.obj (.rodata.str1.15363888844622738466.1)
+                  0000354a    00000010     empty.o (.rodata.str1.9517790425240694019.1)
+                  0000355a    0000000b     empty.o (.rodata.str1.254342170260855183.1)
+                  00003565    00000001     --HOLE-- [fill = 0]
+                  00003566    0000000a     ti_msp_dl_config.o (.rodata.gUART_CH340Config)
+                  00003570    00000002     ti_msp_dl_config.o (.rodata.gI2C_OLEDClockConfig)
+                  00003572    00000002     ti_msp_dl_config.o (.rodata.gUART_CH340ClockConfig)
+                  00003574    0000000c     --HOLE-- [fill = 0]
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -168,11 +170,11 @@ section   page    origin      length       input sections
                   202005f0    00000004     libc.a : aeabi_portable.c.obj (.data.__aeabi_errno)
                   202005f4    00000002     ch340.o (.data.ch340_rx_cnt)
                   202005f6    00000002     ch340.o (.data.ch340_rx_len)
-                  202005f8    00000001     ch340.o (.data.is_timer_uart_ch340_enable)
-                  202005f9    00000001     ch340.o (.data.is_uart_ch340_receive_ok)
+                  202005f8    00000001     ch340.o (.data.is_timer_uart_ch340_enabled)
+                  202005f9    00000001     ch340.o (.data.is_uart_ch340_recv_done)
 
 .bss       0    202005fc    0000025d     UNINITIALIZED
-                  202005fc    000001f4     (.common:ch340_rx_package)
+                  202005fc    000001f4     (.common:ch340_rx_pack)
                   202007f0    00000064     (.common:ch340_tx_package)
                   20200854    00000004     (.common:SYSTEMCLOCK)
                   20200858    00000001     (.common:ch340_rx_byte)
@@ -194,14 +196,14 @@ MODULE SUMMARY
     .\
        ti_msp_dl_config.o             508     37        0      
        startup_mspm0g350x_ticlang.o   6       192       0      
-       empty.o                        92      71        0      
+       empty.o                        92      27        0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         606     300       0      
+       Total:                         606     256       0      
                                                                
     .\hardware\ch340\
-       ch340.o                        460     0         607    
+       ch340.o                        452     0         607    
     +--+------------------------------+-------+---------+---------+
-       Total:                         460     0         607    
+       Total:                         452     0         607    
                                                                
     .\hardware\delay\
        delay.o                        12      0         4      
@@ -273,19 +275,19 @@ MODULE SUMMARY
        Stack:                         0       0         512    
        Linker Generated:              0       986       0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   13118   1577      2647   
+       Grand Total:                   13110   1533      2647   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 0000396c records: 2, size/record: 8, table size: 16
-	.data: load addr=000035a0, load size=000003b6 bytes, run addr=20200000, run size=000005fa bytes, compression=lzss
-	.bss: load addr=00003964, load size=00000008 bytes, run addr=202005fc, run size=0000025d bytes, compression=zero_init
+__TI_cinit_table @ 0000394c records: 2, size/record: 8, table size: 16
+	.data: load addr=00003580, load size=000003b6 bytes, run addr=20200000, run size=000005fa bytes, compression=lzss
+	.bss: load addr=00003944, load size=00000008 bytes, run addr=202005fc, run size=0000025d bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00003958 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00003938 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -297,7 +299,7 @@ callee name               trampoline name
    callee addr  tramp addr   call addr  call info
 --------------  -----------  ---------  ----------------
 __aeabi_dsub              $Tramp$TT$L$PI$$__aeabi_dsub
-   00001b09     000033c0     000033be   libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
+   00001b09     000033b8     000033b6   libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
 
 [1 trampolines]
 [1 trampoline calls]
@@ -310,22 +312,22 @@ address   name
 00001c9b  ADC0_IRQHandler                
 00001c9b  ADC1_IRQHandler                
 00001c9b  AES_IRQHandler                 
-00003402  C$$EXIT                        
+000033fa  C$$EXIT                        
 00001c9b  CANFD0_IRQHandler              
 00001c9b  DAC0_IRQHandler                
-000033ad  DL_Common_delayCycles          
+000033a5  DL_Common_delayCycles          
 00002b0d  DL_I2C_fillControllerTXFIFO    
 000031c9  DL_I2C_setClockConfig          
 000022a1  DL_Timer_initTimerMode         
-00003299  DL_Timer_setClockConfig        
+00003279  DL_Timer_setClockConfig        
 00002f1d  DL_UART_init                   
-00003345  DL_UART_setClockConfig         
+0000333d  DL_UART_setClockConfig         
 00003239  DL_UART_transmitDataBlocking   
 00001c9b  DMA_IRQHandler                 
 00001c9b  Default_Handler                
 00001c9b  GROUP0_IRQHandler              
 00001c9b  GROUP1_IRQHandler              
-00003403  HOSTexit                       
+000033fb  HOSTexit                       
 00001c9b  HardFault_Handler              
 00001c9b  I2C0_IRQHandler                
 00001c9b  I2C1_IRQHandler                
@@ -339,7 +341,7 @@ address   name
 000029e3  OLED_ShowString_FromLineToLine 
 00001c9b  PendSV_Handler                 
 00001c9b  RTC_IRQHandler                 
-00003407  Reset_Handler                  
+000033ff  Reset_Handler                  
 00001c9b  SPI0_IRQHandler                
 00001c9b  SPI1_IRQHandler                
 00001c9b  SVC_Handler                    
@@ -348,7 +350,7 @@ address   name
 00002fad  SYSCFG_DL_SYSCTL_init          
 00002e81  SYSCFG_DL_TIMER_UART_CH340_init
 00002739  SYSCFG_DL_UART_CH340_init      
-000032b5  SYSCFG_DL_init                 
+00003295  SYSCFG_DL_init                 
 00002f65  SYSCFG_DL_initPower            
 20200854  SYSTEMCLOCK                    
 00001c9b  SysTick_Handler                
@@ -374,21 +376,21 @@ address   name
 00000000  __TI_ATRegion2_region_sz       
 00000000  __TI_ATRegion2_src_addr        
 00000000  __TI_ATRegion2_trg_addr        
-0000396c  __TI_CINIT_Base                
-0000397c  __TI_CINIT_Limit               
-0000397c  __TI_CINIT_Warm                
-00003958  __TI_Handler_Table_Base        
-00003964  __TI_Handler_Table_Limit       
+0000394c  __TI_CINIT_Base                
+0000395c  __TI_CINIT_Limit               
+0000395c  __TI_CINIT_Warm                
+00003938  __TI_Handler_Table_Base        
+00003944  __TI_Handler_Table_Limit       
 0000306d  __TI_auto_init_nobinit_nopinit 
 000027b9  __TI_decompress_lzss           
-00003357  __TI_decompress_none           
+0000334f  __TI_decompress_none           
 00002c7d  __TI_ltoa                      
 ffffffff  __TI_pprof_out_hndl            
 000000c1  __TI_printfi                   
 ffffffff  __TI_prof_data_size            
 ffffffff  __TI_prof_data_start           
 00000000  __TI_static_base__             
-00003305  __TI_zero_init_nomemset        
+000032fd  __TI_zero_init_nomemset        
 00001b13  __adddf3                       
 00003410  __aeabi_ctype_table_           
 00003410  __aeabi_ctype_table_C          
@@ -403,24 +405,24 @@ ffffffff  __TI_prof_data_start
 00002389  __aeabi_dmul                   
 00001b09  __aeabi_dsub                   
 202005f0  __aeabi_errno                  
-000033e5  __aeabi_errno_addr             
+000033dd  __aeabi_errno_addr             
 00003149  __aeabi_i2d                    
 00002d2d  __aeabi_idiv                   
 00002a47  __aeabi_idiv0                  
 00002d2d  __aeabi_idivmod                
 00002b6b  __aeabi_ldiv0                  
-00003279  __aeabi_llsl                   
+00003259  __aeabi_llsl                   
 000031f1  __aeabi_lmul                   
-000033ed  __aeabi_memcpy                 
-000033ed  __aeabi_memcpy4                
-000033ed  __aeabi_memcpy8                
-00003379  __aeabi_memset                 
-00003379  __aeabi_memset4                
-00003379  __aeabi_memset8                
+000033e5  __aeabi_memcpy                 
+000033e5  __aeabi_memcpy4                
+000033e5  __aeabi_memcpy8                
+00003371  __aeabi_memset                 
+00003371  __aeabi_memset4                
+00003371  __aeabi_memset8                
 00002fed  __aeabi_uidiv                  
 00002fed  __aeabi_uidivmod               
-0000331d  __aeabi_uldivmod               
-00003279  __ashldi3                      
+00003315  __aeabi_uldivmod               
+00003259  __ashldi3                      
 ffffffff  __binit__                      
 00002915  __cmpdf2                       
 00002195  __divdf3                       
@@ -445,25 +447,25 @@ UNDEFED   __mpu_init
 000025fd  __udivmoddi4                   
 000031a1  _c_int00_noargs                
 UNDEFED   _system_post_cinit             
-0000340b  _system_pre_init               
-000033fd  abort                          
+00003403  _system_pre_init               
+000033f5  abort                          
 0000302d  atoi                           
 ffffffff  binit                          
-000032d1  ch340_init                     
+000032b1  ch340_init                     
 20200858  ch340_rx_byte                  
 202005f4  ch340_rx_cnt                   
 202005f6  ch340_rx_len                   
-202005fc  ch340_rx_package               
+202005fc  ch340_rx_pack                  
 202007f0  ch340_tx_package               
-00003395  delay_init                     
+0000338d  delay_init                     
 00002b6d  frexp                          
 00002b6d  frexpl                         
-00003259  get_ch340_TC_flag              
-000033a1  get_ch340_rx_len               
-000033f5  get_ch340_rx_package           
+000032e5  get_ch340_TC_flag              
+00003399  get_ch340_rx_len               
+000033ed  get_ch340_rx_pack              
 00000000  interruptVectors               
-202005f8  is_timer_uart_ch340_enable     
-202005f9  is_uart_ch340_receive_ok       
+202005f8  is_timer_uart_ch340_enabled    
+202005f9  is_uart_ch340_recv_done        
 0000246d  ldexp                          
 0000246d  ldexpl                         
 00002bc9  main                           
@@ -474,7 +476,7 @@ ffffffff  binit
 0000246d  scalbnl                        
 00002545  uart_ch340_printf              
 00003175  vsprintf                       
-00003369  wcslen                         
+00003361  wcslen                         
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -592,40 +594,40 @@ address   name
 000031f1  __muldi3                       
 00003215  memccpy                        
 00003239  DL_UART_transmitDataBlocking   
-00003259  get_ch340_TC_flag              
-00003279  __aeabi_llsl                   
-00003279  __ashldi3                      
-00003299  DL_Timer_setClockConfig        
-000032b5  SYSCFG_DL_init                 
-000032d1  ch340_init                     
-00003305  __TI_zero_init_nomemset        
-0000331d  __aeabi_uldivmod               
-00003345  DL_UART_setClockConfig         
-00003357  __TI_decompress_none           
-00003369  wcslen                         
-00003379  __aeabi_memset                 
-00003379  __aeabi_memset4                
-00003379  __aeabi_memset8                
-00003395  delay_init                     
-000033a1  get_ch340_rx_len               
-000033ad  DL_Common_delayCycles          
-000033e5  __aeabi_errno_addr             
-000033ed  __aeabi_memcpy                 
-000033ed  __aeabi_memcpy4                
-000033ed  __aeabi_memcpy8                
-000033f5  get_ch340_rx_package           
-000033fd  abort                          
-00003402  C$$EXIT                        
-00003403  HOSTexit                       
-00003407  Reset_Handler                  
-0000340b  _system_pre_init               
+00003259  __aeabi_llsl                   
+00003259  __ashldi3                      
+00003279  DL_Timer_setClockConfig        
+00003295  SYSCFG_DL_init                 
+000032b1  ch340_init                     
+000032e5  get_ch340_TC_flag              
+000032fd  __TI_zero_init_nomemset        
+00003315  __aeabi_uldivmod               
+0000333d  DL_UART_setClockConfig         
+0000334f  __TI_decompress_none           
+00003361  wcslen                         
+00003371  __aeabi_memset                 
+00003371  __aeabi_memset4                
+00003371  __aeabi_memset8                
+0000338d  delay_init                     
+00003399  get_ch340_rx_len               
+000033a5  DL_Common_delayCycles          
+000033dd  __aeabi_errno_addr             
+000033e5  __aeabi_memcpy                 
+000033e5  __aeabi_memcpy4                
+000033e5  __aeabi_memcpy8                
+000033ed  get_ch340_rx_pack              
+000033f5  abort                          
+000033fa  C$$EXIT                        
+000033fb  HOSTexit                       
+000033ff  Reset_Handler                  
+00003403  _system_pre_init               
 00003410  __aeabi_ctype_table_           
 00003410  __aeabi_ctype_table_C          
-00003958  __TI_Handler_Table_Base        
-00003964  __TI_Handler_Table_Limit       
-0000396c  __TI_CINIT_Base                
-0000397c  __TI_CINIT_Limit               
-0000397c  __TI_CINIT_Warm                
+00003938  __TI_Handler_Table_Base        
+00003944  __TI_Handler_Table_Limit       
+0000394c  __TI_CINIT_Base                
+0000395c  __TI_CINIT_Limit               
+0000395c  __TI_CINIT_Warm                
 20200000  OLED_F8x16                     
 20200000  __start___llvm_prf_bits        
 20200000  __start___llvm_prf_cnts        
@@ -634,9 +636,9 @@ address   name
 202005f0  __aeabi_errno                  
 202005f4  ch340_rx_cnt                   
 202005f6  ch340_rx_len                   
-202005f8  is_timer_uart_ch340_enable     
-202005f9  is_uart_ch340_receive_ok       
-202005fc  ch340_rx_package               
+202005f8  is_timer_uart_ch340_enabled    
+202005f9  is_uart_ch340_recv_done        
+202005fc  ch340_rx_pack                  
 202007f0  ch340_tx_package               
 20200854  SYSTEMCLOCK                    
 20200858  ch340_rx_byte                  

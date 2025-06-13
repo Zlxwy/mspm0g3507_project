@@ -44,7 +44,7 @@ int main(void)
     DL_DMA_setDestAddr(DMA, DMA_UART_CH340_CHAN_ID, (uint32_t)&rxData[0]); // 设置DMA目标地址
     DL_DMA_enableChannel(DMA, DMA_UART_CH340_CHAN_ID); // 使能DMA通道
     while (DL_DMA_isChannelEnabled(DMA, DMA_UART_CH340_CHAN_ID) == false); // 保证DMA通道已使能
-    DL_GPIO_setPins(GPIOA, DL_GPIO_PIN_14); // 点亮LED表示初始化完成
+    DL_GPIO_setPins(GPIO_LED_PORT, GPIO_LED_PIN_D2_PIN); // 点亮LED表示初始化完成
 
     while (true) {
         if (rxData[0] == '1' &&
@@ -55,8 +55,8 @@ int main(void)
         delay_ms(10);
     }
 
-    while (1) { // 接收到"12345"后，跳出上一个循环，来到这个循环，LED闪烁
-        DL_GPIO_togglePins(GPIOA, DL_GPIO_PIN_14);
+    while (1) { // 来到这个循环，LED闪烁
+        DL_GPIO_togglePins(GPIO_LED_PORT, GPIO_LED_PIN_D2_PIN);
         delay_ms(100);
     }
 }

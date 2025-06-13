@@ -34,7 +34,8 @@
 #include "delay.h"
 #include "OLED.h"
 
-// 两个示例数据包
+// 两个示例数据包，每个数据包含有4帧数据，分别为角加速度、角速度、角度、磁场数据，共44个字节。
+// 数据包含有什么数据，可以在维特上位机里设置。
 // 55 51 1F 07 5A 02 CC 02 7D 0C 7F  55 52 11 00 34 00 EF FF 7D 0C 63  55 53 48 1B D5 D2 F4 01 FB 46 E8  55 54 99 F5 6B 0C 39 EF 00 00 D6
 // 55 51 24 07 59 02 D9 02 80 0C 93  55 52 12 00 2E 00 F4 FF 80 0C 66  55 53 48 1B D8 D2 F5 01 FB 46 EC  55 54 99 F5 6A 0C 35 EF 00 00 D1
 #define RX_LEN_MAX  88 // 一个数据包有44个字节，长度88的数组就刚好接收完两个数据包
@@ -45,7 +46,7 @@ int main(void)
     SYSCFG_DL_init();
     delay_init(CPUCLK_FREQ);
 
-    /*jy901s_init*/
+    /*在进行以下初始化后，数组 rxData 中便会自动更新 JY901S 的数据了，这是完全由 DMA 进行操作的*/
     DL_DMA_setSrcAddr(DMA, DMA_UART_JY901S_CHAN_ID, (uint32_t)(&UART_JY901S_INST->RXDATA)); // 设置DMA源地址
     DL_DMA_setDestAddr(DMA, DMA_UART_JY901S_CHAN_ID, (uint32_t)&rxData[0]); // 设置DMA目标地址
     DL_DMA_enableChannel(DMA, DMA_UART_JY901S_CHAN_ID); // 使能DMA通道
@@ -66,19 +67,16 @@ int main(void)
         // OLED_ShowHexNum(1, 7, rxData[2], 2);
         // OLED_ShowHexNum(1, 10, rxData[3], 2);
         // OLED_ShowHexNum(1, 13, rxData[4], 2);
-
         // OLED_ShowHexNum(2, 1, rxData[5], 2);
         // OLED_ShowHexNum(2, 4, rxData[6], 2);
         // OLED_ShowHexNum(2, 7, rxData[7], 2);
         // OLED_ShowHexNum(2, 10, rxData[8], 2);
         // OLED_ShowHexNum(2, 13, rxData[9], 2);
-
         // OLED_ShowHexNum(3, 1, rxData[10], 2);
         // OLED_ShowHexNum(3, 4, rxData[11], 2);
         // OLED_ShowHexNum(3, 7, rxData[12], 2);
         // OLED_ShowHexNum(3, 10, rxData[13], 2);
         // OLED_ShowHexNum(3, 13, rxData[14], 2);
-
         // OLED_ShowHexNum(4, 1, rxData[15], 2);
         // OLED_ShowHexNum(4, 4, rxData[16], 2);
         // OLED_ShowHexNum(4, 7, rxData[17], 2);
@@ -99,7 +97,6 @@ int main(void)
             }
         } else { // 如果已经找到帧头
             if (rxData[FrameHeadIndex[0]] != 0x55) hasFoundFrameHead = false; // 若帧头丢失，则重新寻找帧头
-
             /*组合出原始的16位角度数据*/
             int16_t roll_int16  = rxData[FrameHeadIndex[2]+2] | (rxData[FrameHeadIndex[2]+3]<<8);
             int16_t pitch_int16 = rxData[FrameHeadIndex[2]+4] | (rxData[FrameHeadIndex[2]+5]<<8);
@@ -113,7 +110,6 @@ int main(void)
             OLED_ShowFloatNum(3, 8, pitch, 4, 2);
             OLED_ShowFloatNum(4, 8, yaw,   4, 2);
         }
-
         delay_ms(10);
     }
 }

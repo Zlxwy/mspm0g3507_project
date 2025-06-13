@@ -13,12 +13,11 @@ int main(void)
     OLED_Init();
     OLED_ShowString(01, 01, "Receiving......");
 
-    while (1)
-    {
-        if( get_ch340_TC_flag() )
-        {
-            uart_ch340_printf("此次接收了%d个数据。\n发送的数据为：%s\n", get_ch340_rx_len(), (char*)get_ch340_rx_package());//串口回传
-            OLED_Clear(); OLED_ShowString_FromLineToLine(1, (char*)get_ch340_rx_package(), 4);//屏幕显示
+    while (1) {
+        if( get_ch340_TC_flag() ) { // 如果接收到数据
+            OLED_Clear(); // 清屏
+            OLED_ShowString_FromLineToLine(1, (char*)get_ch340_rx_pack(), 4); // 屏幕显示
+            uart_ch340_printf(" >(%d) %s\n", get_ch340_rx_len(), (char*)get_ch340_rx_pack()); // 串口回传
         }
     }
 }
