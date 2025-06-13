@@ -1,0 +1,111 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gpio_led_toggle_periodically",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "gpio_led_toggle_periodically",
+                "resourceId": "/gpio_led_toggle_periodically"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "uart_rx_timeout_interrupt",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_rx_timeout_interrupt",
+                "resourceId": "/uart_rx_timeout_interrupt"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "uart_rx_dma_transfer_circularly",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_rx_dma_transfer_circularly",
+                "resourceId": "/uart_rx_dma_transfer_circularly"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "uart_tim_imitate_idle_interrupt",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_tim_imitate_idle_interrupt",
+                "resourceId": "/uart_tim_imitate_idle_interrupt"
+            }
+        },
+        {
+            "name": "uart_rx_dma_transfer_circularlypcopy",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_rx_dma_transfer_circularlypcopy",
+                "resourceId": "/uart_rx_dma_transfer_circularlypcopy"
+            }
+        },
+        {
+            "name": "uart_rx_dma_jy901s_read_data",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_rx_dma_jy901s_read_data",
+                "resourceId": "/uart_rx_dma_jy901s_read_data"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

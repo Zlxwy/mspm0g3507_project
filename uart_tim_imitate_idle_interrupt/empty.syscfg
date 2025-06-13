@@ -1,0 +1,77 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --device "MSPM0G350X" --package "LQFP-48(PT)" --part "Default" --product "mspm0_sdk@2.01.00.03"
+ * @versions {"tool":"1.20.0+3587"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const I2C           = scripting.addModule("/ti/driverlib/I2C", {}, false);
+const I2C1          = I2C.addInstance();
+const SYSCTL        = scripting.addModule("/ti/driverlib/SYSCTL");
+const TIMER         = scripting.addModule("/ti/driverlib/TIMER", {}, false);
+const TIMER1        = TIMER.addInstance();
+const UART          = scripting.addModule("/ti/driverlib/UART", {}, false);
+const UART1         = UART.addInstance();
+const ProjectConfig = scripting.addModule("/ti/project_config/ProjectConfig");
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+I2C1.$name                             = "I2C_OLED";
+I2C1.basicEnableController             = true;
+I2C1.basicControllerStandardBusSpeed   = "Fast";
+I2C1.peripheral.$assign                = "I2C0";
+I2C1.peripheral.sdaPin.$assign         = "PA0";
+I2C1.peripheral.sclPin.$assign         = "PA1";
+I2C1.sdaPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric0";
+I2C1.sdaPinConfig.hideOutputInversion  = scripting.forceWrite(false);
+I2C1.sdaPinConfig.onlyInternalResistor = scripting.forceWrite(false);
+I2C1.sdaPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+I2C1.sclPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric1";
+I2C1.sclPinConfig.hideOutputInversion  = scripting.forceWrite(false);
+I2C1.sclPinConfig.onlyInternalResistor = scripting.forceWrite(false);
+I2C1.sclPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+
+const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
+Board.peripheral.$assign          = "DEBUGSS";
+Board.peripheral.swclkPin.$assign = "PA20";
+Board.peripheral.swdioPin.$assign = "PA19";
+
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.peripheral.$assign    = "SYSCTL";
+
+TIMER1.timerClkDiv        = 2;
+TIMER1.timerClkPrescale   = 100;
+TIMER1.interrupts         = ["LOAD"];
+TIMER1.timerMode          = "PERIODIC_UP";
+TIMER1.interruptPriority  = "1";
+TIMER1.timerPeriod        = "2 ms";
+TIMER1.$name              = "TIMER_UART_CH340";
+TIMER1.peripheral.$assign = "TIMG8";
+
+UART1.$name                            = "UART_CH340";
+UART1.targetBaudRate                   = 115200;
+UART1.enabledInterrupts                = ["RX"];
+UART1.interruptPriority                = "0";
+UART1.peripheral.$assign               = "UART0";
+UART1.peripheral.rxPin.$assign         = "PA11";
+UART1.peripheral.txPin.$assign         = "PA10";
+UART1.txPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric2";
+UART1.txPinConfig.direction            = scripting.forceWrite("OUTPUT");
+UART1.txPinConfig.hideOutputInversion  = scripting.forceWrite(false);
+UART1.txPinConfig.onlyInternalResistor = scripting.forceWrite(false);
+UART1.txPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+UART1.txPinConfig.enableConfig         = true;
+UART1.txPinConfig.internalResistor     = "PULL_UP";
+UART1.rxPinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric3";
+UART1.rxPinConfig.hideOutputInversion  = scripting.forceWrite(false);
+UART1.rxPinConfig.onlyInternalResistor = scripting.forceWrite(false);
+UART1.rxPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+UART1.rxPinConfig.enableConfig         = true;
+UART1.rxPinConfig.internalResistor     = "PULL_UP";
+
+ProjectConfig.deviceSpin = "MSPM0G3507";
+scripting.suppress("Migrating requires going through the Switch Board or Device menu in the Device View section\\.", ProjectConfig, "deviceSpin");
