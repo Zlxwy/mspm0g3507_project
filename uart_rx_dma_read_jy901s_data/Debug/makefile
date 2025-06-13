@@ -128,21 +128,21 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-uart_rx_dma_jy901s_read_data.out 
+uart_rx_dma_read_jy901s_data.out 
 
 EXE_OUTPUTS__QUOTED += \
-"uart_rx_dma_jy901s_read_data.out" 
+"uart_rx_dma_read_jy901s_data.out" 
 
 
 # All Target
 all: $(OBJS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "uart_rx_dma_jy901s_read_data.out"
+	@$(MAKE) --no-print-directory -Onone "uart_rx_dma_read_jy901s_data.out"
 
 # Tool invocations
-uart_rx_dma_jy901s_read_data.out: $(OBJS) $(GEN_CMDS)
+uart_rx_dma_read_jy901s_data.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"uart_rx_dma_jy901s_read_data.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_rx_dma_jy901s_read_data" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_rx_dma_jy901s_read_data/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="uart_rx_dma_jy901s_read_data_linkInfo.xml" -Wl,--rom_model -o "uart_rx_dma_jy901s_read_data.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"uart_rx_dma_read_jy901s_data.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_rx_dma_read_jy901s_data" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_rx_dma_read_jy901s_data/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="uart_rx_dma_read_jy901s_data_linkInfo.xml" -Wl,--rom_model -o "uart_rx_dma_read_jy901s_data.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

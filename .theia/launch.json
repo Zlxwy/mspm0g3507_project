@@ -86,12 +86,12 @@
             }
         },
         {
-            "name": "uart_rx_dma_jy901s_read_data",
+            "name": "uart_rx_dma_read_jy901s_data",
             "type": "ccs-debug",
             "request": "launch",
             "projectInfo": {
-                "name": "uart_rx_dma_jy901s_read_data",
-                "resourceId": "/uart_rx_dma_jy901s_read_data"
+                "name": "uart_rx_dma_read_jy901s_data",
+                "resourceId": "/uart_rx_dma_read_jy901s_data"
             },
             "connections": [
                 {
