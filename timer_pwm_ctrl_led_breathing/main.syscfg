@@ -1,0 +1,46 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --device "MSPM0G350X" --package "LQFP-48(PT)" --part "Default" --product "mspm0_sdk@2.01.00.03"
+ * @versions {"tool":"1.20.0+3587"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const PWM           = scripting.addModule("/ti/driverlib/PWM", {}, false);
+const PWM1          = PWM.addInstance();
+const SYSCTL        = scripting.addModule("/ti/driverlib/SYSCTL");
+const ProjectConfig = scripting.addModule("/ti/project_config/ProjectConfig");
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+PWM1.$name                              = "PWM_LED2";
+PWM1.pwmMode                            = "EDGE_ALIGN_UP";
+PWM1.ccIndex                            = [0];
+PWM1.timerStartTimer                    = true;
+PWM1.peripheral.ccp0Pin.$assign         = "PA14";
+PWM1.PWM_CHANNEL_0.$name                = "ti_driverlib_pwm_PWMTimerCC0";
+PWM1.ccp0PinConfig.$name                = "ti_driverlib_gpio_GPIOPinGeneric0";
+PWM1.ccp0PinConfig.direction            = scripting.forceWrite("OUTPUT");
+PWM1.ccp0PinConfig.hideOutputInversion  = scripting.forceWrite(false);
+PWM1.ccp0PinConfig.onlyInternalResistor = scripting.forceWrite(false);
+PWM1.ccp0PinConfig.passedPeripheralType = scripting.forceWrite("Digital");
+
+const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
+Board.peripheral.$assign          = "DEBUGSS";
+Board.peripheral.swclkPin.$assign = "PA20";
+Board.peripheral.swdioPin.$assign = "PA19";
+
+SYSCTL.forceDefaultClkConfig = true;
+SYSCTL.peripheral.$assign    = "SYSCTL";
+
+ProjectConfig.deviceSpin = "MSPM0G3507";
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+PWM1.peripheral.$suggestSolution = "TIMG12";
