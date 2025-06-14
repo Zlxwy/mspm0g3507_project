@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs2002/ccs/tools/compiler/ti-cgt-armllvm_4.0.1.LTS
+CG_TOOL_ROOT := C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS
 
 GEN_OPTS__FLAG := @"./device.opt" 
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
@@ -142,7 +142,7 @@ all: $(OBJS) $(GEN_CMDS)
 i2c_hardware_oled128x64_test.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2002/ccs/tools/compiler/ti-cgt-armllvm_4.0.1.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"i2c_hardware_oled128x64_test.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/Debug/syscfg" -Wl,-i"C:/ti/ccs2002/ccs/tools/compiler/ti-cgt-armllvm_4.0.1.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="i2c_hardware_oled128x64_test_linkInfo.xml" -Wl,--rom_model -o "i2c_hardware_oled128x64_test.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"i2c_hardware_oled128x64_test.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="i2c_hardware_oled128x64_test_linkInfo.xml" -Wl,--rom_model -o "i2c_hardware_oled128x64_test.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

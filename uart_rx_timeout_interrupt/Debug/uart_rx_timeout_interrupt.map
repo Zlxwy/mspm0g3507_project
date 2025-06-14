@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Thu Jun 12 23:32:01 2025
+>> Linked Sat Jun 14 16:21:41 2025
 
 OUTPUT FILE NAME:   <uart_rx_timeout_interrupt.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000048d

@@ -74,8 +74,8 @@ empty.o: ../empty.c \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/dl_wwdt.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_systick.h \
- D:/MCU/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/delay/delay.h \
- D:/MCU/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/oled/OLED.h
+ E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/delay/delay.h \
+ E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/oled/OLED.h
 ti_msp_dl_config.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/devices/msp/msp.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/devices/DeviceFamily.h:
@@ -149,5 +149,5 @@ C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/dl_vref.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/dl_wwdt.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_systick.h:
-D:/MCU/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/delay/delay.h:
-D:/MCU/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/oled/OLED.h:
+E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/delay/delay.h:
+E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled128x64_test/hardware/oled/OLED.h:

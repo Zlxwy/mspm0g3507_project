@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Sat Jun 14 13:15:58 2025
+>> Linked Sat Jun 14 16:21:36 2025
 
 OUTPUT FILE NAME:   <timer_interrupt_ctrl_led_toggle.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000295
