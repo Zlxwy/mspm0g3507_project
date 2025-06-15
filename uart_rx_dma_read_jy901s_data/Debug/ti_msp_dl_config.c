@@ -214,7 +214,7 @@ static const DL_DMA_Config gDMA_UART_JY901SConfig = {
 SYSCONFIG_WEAK void SYSCFG_DL_DMA_UART_JY901S_init(void)
 {
     DL_DMA_setDestIncrement(DMA, DMA_UART_JY901S_CHAN_ID, DL_DMA_ADDR_INCREMENT);
-    DL_DMA_setTransferSize(DMA, DMA_UART_JY901S_CHAN_ID, 88);
+    DL_DMA_setTransferSize(DMA, DMA_UART_JY901S_CHAN_ID, 66);
     DL_DMA_initChannel(DMA, DMA_UART_JY901S_CHAN_ID , (DL_DMA_Config *) &gDMA_UART_JY901SConfig);
 }
 SYSCONFIG_WEAK void SYSCFG_DL_DMA_init(void){

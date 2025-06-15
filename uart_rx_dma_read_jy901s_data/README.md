@@ -14,6 +14,13 @@
 - J-Link OB调试器
 
 ## 配置
+### JY901S配置
+> **需要在维特的上位机中进行配置**
+- 算法：<u>九轴算法</u>
+- 波特率：<u>115200</u>
+- 输出带宽：<u>188Hz</u>
+- 输出速率：<u>200Hz</u>
+- 输出数据：<u>角加速度、角速度、欧拉角（只有这三种）</u>
 ### I2C
 * I2C Name: <u>I2C_OLED</u>
 - Basic Configuration
@@ -41,7 +48,7 @@
     * Destination Length: <u>Byte</u>
     * Destination Address Direction: <u>Increment</u>
     * Configure Transfer Size: <u>select</u>
-    * Transfer Size: <u>88</u>
+    * Transfer Size: <u>66</u>
     * Transfer Mode: <u>Repeat Single</u>
     * Source Address Increment: <u>Do not change address after each transfer</u>
     * Destination Address Increment: <u>Increment</u>

@@ -53,9 +53,9 @@ UART1.DMA_CHANNEL_RX.addressMode           = "f2b";
 UART1.DMA_CHANNEL_RX.srcLength             = "BYTE";
 UART1.DMA_CHANNEL_RX.dstLength             = "BYTE";
 UART1.DMA_CHANNEL_RX.configureTransferSize = true;
-UART1.DMA_CHANNEL_RX.transferSize          = 88;
 UART1.DMA_CHANNEL_RX.transferMode          = "FULL_CH_REPEAT_SINGLE";
 UART1.DMA_CHANNEL_RX.destIncrement         = "INCREMENT";
+UART1.DMA_CHANNEL_RX.transferSize          = 66;
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
