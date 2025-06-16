@@ -172,6 +172,37 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "gpio_i2c_simulator_oled_driver",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "gpio_i2c_simulator_oled_driver",
+                "resourceId": "/gpio_i2c_simulator_oled_driver"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "i2c_hardware_oled128x64_test",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "i2c_hardware_oled128x64_test",
+                "resourceId": "/i2c_hardware_oled128x64_test"
+            }
         }
     ]
 }
