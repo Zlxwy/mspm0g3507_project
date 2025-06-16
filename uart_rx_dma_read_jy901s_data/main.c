@@ -40,7 +40,11 @@
 // 55 51 1F 07 5A 02 CC 02 7D 0C 7F  55 52 11 00 34 00 EF FF 7D 0C 63  55 53 48 1B D5 D2 F4 01 FB 46 E8
 // 55 51 24 07 59 02 D9 02 80 0C 93  55 52 12 00 2E 00 F4 FF 80 0C 66  55 53 48 1B D8 D2 F5 01 FB 46 EC
 #define RX_LEN_MAX  33*2 // 一个数据包有33个字节，长度66的数组就刚好接收完两个数据包
-volatile uint8_t rxData[RX_LEN_MAX]; // 接收数组
+volatile uint8_t rxData[RX_LEN_MAX]; // 接收数组，存放JY901S的原始数据
+
+float angleX, angleY, angleZ; // 角度数据 (分别对应roll, pitch, yaw)
+float gyroX, gyroY, gyroZ; // 角速度数据
+float accX, accY, accZ; // 角加速度数据
 
 int main(void)
 {
@@ -54,14 +58,13 @@ int main(void)
     while (DL_DMA_isChannelEnabled(DMA, DMA_UART_JY901S_CHAN_ID) == false); // 确保DMA通道已使能
     
     OLED_Init();
-    OLED_ShowString(1, 1, " JY901S ANGLES  ");
+    OLED_ShowString(1, 1, "JY901S ANGLES   ");
     OLED_ShowString(2, 1, "Roll:  +0000.00 ");
     OLED_ShowString(3, 1, "Pitch: +0000.00 ");
     OLED_ShowString(4, 1, "Yaw:   +0000.00 ");
 
     bool hasFoundFrameHead = false; // 是否已经找到帧头
     uint8_t FrameHeadIndex[3] = {0}; // 帧头在数组 rxData 中的索引
-    float pitch, roll, yaw; // 角度数据
     while (true) {
         // OLED_ShowHexNum(1, 1, rxData[0], 2);
         // OLED_ShowHexNum(1, 4, rxData[1], 2);
@@ -101,18 +104,37 @@ int main(void)
                 hasFoundFrameHead = false; // 则重新寻找帧头
                 continue; // 重新进入 while (true) 循环，不执行以下代码
             }
-            /*组合出原始的16位角度数据*/
-            int16_t roll_int16  = rxData[FrameHeadIndex[2]+2] | (rxData[FrameHeadIndex[2]+3]<<8);
-            int16_t pitch_int16 = rxData[FrameHeadIndex[2]+4] | (rxData[FrameHeadIndex[2]+5]<<8);
-            int16_t yaw_int16   = rxData[FrameHeadIndex[2]+6] | (rxData[FrameHeadIndex[2]+7]<<8);
-            /*计算出以度为单位的角度数据*/
-            roll  = (float)roll_int16  * 180.0 / 32768.0;
-            pitch = (float)pitch_int16 * 180.0 / 32768.0;
-            yaw   = (float)yaw_int16   * 180.0 / 32768.0;
-            /*显示浮点数*/
-            OLED_ShowFloatNum(2, 8, roll,  4, 2);
-            OLED_ShowFloatNum(3, 8, pitch, 4, 2);
-            OLED_ShowFloatNum(4, 8, yaw,   4, 2);
+
+            /*组合出有符号16位角加速度数据*/
+            int16_t accX_int16 = rxData[FrameHeadIndex[0]+2] | (rxData[FrameHeadIndex[0]+3]<<8);
+            int16_t accY_int16 = rxData[FrameHeadIndex[0]+4] | (rxData[FrameHeadIndex[0]+5]<<8);
+            int16_t accZ_int16 = rxData[FrameHeadIndex[0]+6] | (rxData[FrameHeadIndex[0]+7]<<8);
+            /*组合出有符号16位角速度数据*/
+            int16_t gyroX_int16 = rxData[FrameHeadIndex[1]+2] | (rxData[FrameHeadIndex[1]+3]<<8);
+            int16_t gyroY_int16 = rxData[FrameHeadIndex[1]+4] | (rxData[FrameHeadIndex[1]+5]<<8);
+            int16_t gyroZ_int16 = rxData[FrameHeadIndex[1]+6] | (rxData[FrameHeadIndex[1]+7]<<8);
+            /*组合出有符号16位角度数据*/
+            int16_t angleX_int16 = rxData[FrameHeadIndex[2]+2] | (rxData[FrameHeadIndex[2]+3]<<8);
+            int16_t angleY_int16 = rxData[FrameHeadIndex[2]+4] | (rxData[FrameHeadIndex[2]+5]<<8);
+            int16_t angleZ_int16 = rxData[FrameHeadIndex[2]+6] | (rxData[FrameHeadIndex[2]+7]<<8);
+
+            /*计算出角加速度数据（单位：g，约9.8m/s^2）*/
+            accX = (float)accX_int16 * 16.0 / 32768.0;
+            accY = (float)accY_int16 * 16.0 / 32768.0;
+            accZ = (float)accZ_int16 * 16.0 / 32768.0;
+            /*计算出角速度数据（单位：度每秒）*/
+            gyroX = (float)gyroX_int16 * 2000.0 / 32768.0;
+            gyroY = (float)gyroY_int16 * 2000.0 / 32768.0;
+            gyroZ = (float)gyroZ_int16 * 2000.0 / 32768.0;
+            /*计算出角度数据（单位：度）*/
+            angleX = (float)angleX_int16 * 180.0 / 32768.0;
+            angleY = (float)angleY_int16 * 180.0 / 32768.0;
+            angleZ = (float)angleZ_int16 * 180.0 / 32768.0;
+
+            /*显示角度数据*/
+            OLED_ShowFloatNum(2, 8, angleX, 4, 2); // roll
+            OLED_ShowFloatNum(3, 8, angleY, 4, 2); // pitch
+            OLED_ShowFloatNum(4, 8, angleZ, 4, 2); // yaw
         }
         delay_ms(10);
     }
