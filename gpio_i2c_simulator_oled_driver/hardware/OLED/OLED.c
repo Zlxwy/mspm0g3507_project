@@ -79,7 +79,7 @@
   * 随后调用OLED_Update函数或OLED_UpdateArea函数
   * 才会将显存数组的数据发送到OLED硬件，进行显示
   */
-volatile uint8_t OLED_DisplayBuf[8][128];
+uint8_t OLED_DisplayBuf[8][128];
 
 /*********************全局变量*/
 
