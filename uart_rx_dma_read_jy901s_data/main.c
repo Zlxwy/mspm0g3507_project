@@ -65,27 +65,6 @@ int main(void)
     bool hasFoundFrameHead = false; // 是否已经找到帧头
     uint8_t FrameHeadIndex[3] = {0}; // 帧头在数组 rxData 中的索引
     while (true) {
-        // OLED_ShowHexNum(1, 1, rxData[0], 2);
-        // OLED_ShowHexNum(1, 4, rxData[1], 2);
-        // OLED_ShowHexNum(1, 7, rxData[2], 2);
-        // OLED_ShowHexNum(1, 10, rxData[3], 2);
-        // OLED_ShowHexNum(1, 13, rxData[4], 2);
-        // OLED_ShowHexNum(2, 1, rxData[5], 2);
-        // OLED_ShowHexNum(2, 4, rxData[6], 2);
-        // OLED_ShowHexNum(2, 7, rxData[7], 2);
-        // OLED_ShowHexNum(2, 10, rxData[8], 2);
-        // OLED_ShowHexNum(2, 13, rxData[9], 2);
-        // OLED_ShowHexNum(3, 1, rxData[10], 2);
-        // OLED_ShowHexNum(3, 4, rxData[11], 2);
-        // OLED_ShowHexNum(3, 7, rxData[12], 2);
-        // OLED_ShowHexNum(3, 10, rxData[13], 2);
-        // OLED_ShowHexNum(3, 13, rxData[14], 2);
-        // OLED_ShowHexNum(4, 1, rxData[15], 2);
-        // OLED_ShowHexNum(4, 4, rxData[16], 2);
-        // OLED_ShowHexNum(4, 7, rxData[17], 2);
-        // OLED_ShowHexNum(4, 10, rxData[18], 2);
-        // OLED_ShowHexNum(4, 13, rxData[19], 2);
-
         if (!hasFoundFrameHead) { // 如果没有找到帧头
             for (int i=0; i<RX_LEN_MAX/2; i++) { // 遍历接收数组 rxData 前半部分
                 if (rxData[i] == 0x55 && rxData[i+1] == 0x51) { // 如果发现帧头 (0x55 0x51)
