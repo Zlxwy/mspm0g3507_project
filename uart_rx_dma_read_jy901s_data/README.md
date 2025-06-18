@@ -42,7 +42,7 @@
     * Assigned Port: <u>PORTB</u>
     * Assigned Pin: <u>7</u>
 ### UART
-* UART Name: <u>UART_JY901S</u>
+* UART Name: <span style="text-decoration: underline;">tzrgz</span>UART_JY901S</span>
 - PinMux
   * UART Peripheral: <u>UART3</u>
   * RX Pin: <u>PA13</u>
