@@ -76,22 +76,6 @@ extern "C" {
 
 
 
-
-/* Defines for I2C_OLED */
-#define I2C_OLED_INST                                                       I2C0
-#define I2C_OLED_INST_IRQHandler                                 I2C0_IRQHandler
-#define I2C_OLED_INST_INT_IRQN                                     I2C0_INT_IRQn
-#define I2C_OLED_BUS_SPEED_HZ                                             400000
-#define GPIO_I2C_OLED_SDA_PORT                                             GPIOA
-#define GPIO_I2C_OLED_SDA_PIN                                      DL_GPIO_PIN_0
-#define GPIO_I2C_OLED_IOMUX_SDA                                   (IOMUX_PINCM1)
-#define GPIO_I2C_OLED_IOMUX_SDA_FUNC                    IOMUX_PINCM1_PF_I2C0_SDA
-#define GPIO_I2C_OLED_SCL_PORT                                             GPIOA
-#define GPIO_I2C_OLED_SCL_PIN                                      DL_GPIO_PIN_1
-#define GPIO_I2C_OLED_IOMUX_SCL                                   (IOMUX_PINCM2)
-#define GPIO_I2C_OLED_IOMUX_SCL_FUNC                    IOMUX_PINCM2_PF_I2C0_SCL
-
-
 /* Defines for UART_JY901S */
 #define UART_JY901S_INST                                                   UART3
 #define UART_JY901S_INST_IRQHandler                             UART3_IRQHandler
@@ -113,15 +97,26 @@ extern "C" {
 #define UART_JY901S_INST_DMA_TRIGGER                         (DMA_UART3_RX_TRIG)
 
 
+
+/* Port definition for Pin Group GPIO_OLED */
+#define GPIO_OLED_PORT                                                   (GPIOB)
+
+/* Defines for PIN_SCL: GPIOB.6 with pinCMx 23 on package pin 20 */
+#define GPIO_OLED_PIN_SCL_PIN                                    (DL_GPIO_PIN_6)
+#define GPIO_OLED_PIN_SCL_IOMUX                                  (IOMUX_PINCM23)
+/* Defines for PIN_SDA: GPIOB.7 with pinCMx 24 on package pin 21 */
+#define GPIO_OLED_PIN_SDA_PIN                                    (DL_GPIO_PIN_7)
+#define GPIO_OLED_PIN_SDA_IOMUX                                  (IOMUX_PINCM24)
+
 /* clang-format on */
 
 void SYSCFG_DL_init(void);
 void SYSCFG_DL_initPower(void);
 void SYSCFG_DL_GPIO_init(void);
 void SYSCFG_DL_SYSCTL_init(void);
-void SYSCFG_DL_I2C_OLED_init(void);
 void SYSCFG_DL_UART_JY901S_init(void);
 void SYSCFG_DL_DMA_init(void);
+
 
 bool SYSCFG_DL_saveConfiguration(void);
 bool SYSCFG_DL_restoreConfiguration(void);

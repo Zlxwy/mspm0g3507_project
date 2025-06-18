@@ -6,21 +6,27 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../hardware/oled/OLED.c 
+../hardware/OLED/OLED.c \
+../hardware/OLED/OLED_Data.c 
 
 C_DEPS += \
-./hardware/oled/OLED.d 
+./hardware/OLED/OLED.d \
+./hardware/OLED/OLED_Data.d 
 
 OBJS += \
-./hardware/oled/OLED.o 
+./hardware/OLED/OLED.o \
+./hardware/OLED/OLED_Data.o 
 
 OBJS__QUOTED += \
-"hardware\oled\OLED.o" 
+"hardware\OLED\OLED.o" \
+"hardware\OLED\OLED_Data.o" 
 
 C_DEPS__QUOTED += \
-"hardware\oled\OLED.d" 
+"hardware\OLED\OLED.d" \
+"hardware\OLED\OLED_Data.d" 
 
 C_SRCS__QUOTED += \
-"../hardware/oled/OLED.c" 
+"../hardware/OLED/OLED.c" \
+"../hardware/OLED/OLED_Data.c" 
 
 

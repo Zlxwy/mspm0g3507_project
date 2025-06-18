@@ -20,7 +20,7 @@
 - 左侧栏 **Project Configuration** 会有一个报错、一个警告，在 **Select Device** 重新选择一下芯片型号，忽略掉警告就行。
 ### GPIO
 * Name: <u>GPIO_OLED</u>
-  - Group Pins
+  - Group Pins (2 added)
     * Name: <u>PIN_SCL</u>
     * Direction: <u>Output</u>
     * Initial Value: <u>Set</u>

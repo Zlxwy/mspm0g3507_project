@@ -58,10 +58,9 @@ int main(void)
     while (DL_DMA_isChannelEnabled(DMA, DMA_UART_JY901S_CHAN_ID) == false); // 确保DMA通道已使能
     
     OLED_Init();
-    OLED_ShowString(1, 1, "JY901S ANGLES   ");
-    OLED_ShowString(2, 1, "Roll:  +0000.00 ");
-    OLED_ShowString(3, 1, "Pitch: +0000.00 ");
-    OLED_ShowString(4, 1, "Yaw:   +0000.00 ");
+    OLED_Printf(0, 1, OLED_6X8, "JY901S ANGLE and GYRO");
+    OLED_Printf(0, 10, OLED_6X8, "Initializing...");
+    OLED_Update();
 
     bool hasFoundFrameHead = false; // 是否已经找到帧头
     uint8_t FrameHeadIndex[3] = {0}; // 帧头在数组 rxData 中的索引
@@ -131,10 +130,15 @@ int main(void)
             angleY = (float)angleY_int16 * 180.0 / 32768.0;
             angleZ = (float)angleZ_int16 * 180.0 / 32768.0;
 
-            /*显示角度数据*/
-            OLED_ShowFloatNum(2, 8, angleX, 4, 2); // roll
-            OLED_ShowFloatNum(3, 8, angleY, 4, 2); // pitch
-            OLED_ShowFloatNum(4, 8, angleZ, 4, 2); // yaw
+            /*显示角度数据（带正负号，3位整数位，2位小数位）*/
+            OLED_ClearArea(0, 10, 128, 54);
+            OLED_Printf(0, 10, OLED_6X8, "Roll:  %+5.3f", angleX); // roll
+            OLED_Printf(0, 19, OLED_6X8, "Pitch: %+5.3f", angleY); // pitch
+            OLED_Printf(0, 28, OLED_6X8, "Yaw:   %+5.3f", angleZ); // yaw
+            OLED_Printf(0, 37, OLED_6X8, "GyroX: %+5.3f", gyroX);
+            OLED_Printf(0, 46, OLED_6X8, "GyroY: %+5.3f", gyroY);
+            OLED_Printf(0, 55, OLED_6X8, "GyroZ: %+5.3f", gyroZ);
+            OLED_Update();
         }
         delay_ms(10);
     }

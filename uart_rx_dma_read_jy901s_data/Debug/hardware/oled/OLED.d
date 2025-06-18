@@ -1,6 +1,6 @@
 # FIXED
 
-hardware/oled/OLED.o: ../hardware/oled/OLED.c ../hardware/oled/OLED.h \
+hardware/OLED/OLED.o: ../hardware/OLED/OLED.c \
  ti_msp_dl_config.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/devices/DeviceFamily.h \
@@ -74,8 +74,8 @@ hardware/oled/OLED.o: ../hardware/oled/OLED.c ../hardware/oled/OLED.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/dl_wwdt.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_systick.h \
- ../hardware/oled/OLED_FONT.h
-../hardware/oled/OLED.h:
+ E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_rx_dma_read_jy901s_data/hardware/delay/delay.h \
+ ../hardware/OLED/OLED.h ../hardware/OLED/OLED_Data.h
 ti_msp_dl_config.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/devices/msp/msp.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/devices/DeviceFamily.h:
@@ -149,4 +149,6 @@ C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/dl_vref.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/dl_wwdt.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/ti/mspm0_sdk_2_01_00_03/source/ti/driverlib/m0p/dl_systick.h:
-../hardware/oled/OLED_FONT.h:
+E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_rx_dma_read_jy901s_data/hardware/delay/delay.h:
+../hardware/OLED/OLED.h:
+../hardware/OLED/OLED_Data.h:

@@ -13,8 +13,9 @@ ORDERED_OBJS += \
 "./main.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
+"./hardware/OLED/OLED.o" \
+"./hardware/OLED/OLED_Data.o" \
 "./hardware/delay/delay.o" \
-"./hardware/oled/OLED.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -27,11 +28,11 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include hardware/OLED/subdir_vars.mk
 -include hardware/delay/subdir_vars.mk
--include hardware/oled/subdir_vars.mk
 -include subdir_rules.mk
+-include hardware/OLED/subdir_rules.mk
 -include hardware/delay/subdir_rules.mk
--include hardware/oled/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -149,8 +150,8 @@ uart_rx_dma_read_jy901s_data.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "hardware\delay\delay.o" "hardware\oled\OLED.o" 
-	-$(RM) "main.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "hardware\delay\delay.d" "hardware\oled\OLED.d" 
+	-$(RM) "main.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "hardware\OLED\OLED.o" "hardware\OLED\OLED_Data.o" "hardware\delay\delay.o" 
+	-$(RM) "main.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "hardware\OLED\OLED.d" "hardware\OLED\OLED_Data.d" "hardware\delay\delay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
