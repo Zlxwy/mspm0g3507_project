@@ -120,10 +120,10 @@ int main(void)
         OLED_Printf(0, 16, OLED_8X16, "Cnt: %d     ", EncoderCount);
 
         /*显示编码器转动方向*/
-        if (isEncoderRotatingForward == false) {
-            OLED_Printf(0, 32, OLED_8X16, "Dir: Down   ");
-        } else {
+        if (isEncoderRotatingForward != false) {
             OLED_Printf(0, 32, OLED_8X16, "Dir: up     ");
+        } else {
+            OLED_Printf(0, 32, OLED_8X16, "Dir: Down   ");
         }
 
         /*更新OLED显示*/

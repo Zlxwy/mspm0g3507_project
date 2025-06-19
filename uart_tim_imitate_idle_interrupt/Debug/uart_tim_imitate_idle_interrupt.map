@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Sat Jun 14 03:53:55 2025
+>> Linked Fri Jun 20 02:53:06 2025
 
 OUTPUT FILE NAME:   <uart_tim_imitate_idle_interrupt.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000031a1
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   FLASH                 00000000   00020000  00003958  0001c6a8  R  X
-  SRAM                  20200000   00008000  00000a57  000075a9  RW X
+  SRAM                  20200000   00008000  00000a5b  000075a5  RW X
   BCR_CONFIG            41c00000   00000080  00000000  00000080  R   
   BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
 
@@ -27,9 +27,9 @@ run origin  load origin   length   init length attrs members
 00003410    00003410    00000550   00000550    r--
   00003410    00003410    00000170   00000170    r-- .rodata
   00003580    00003580    000003e0   000003e0    r-- .cinit
-20200000    20200000    00000859   00000000    rw-
+20200000    20200000    00000861   00000000    rw-
   20200000    20200000    000005fa   00000000    rw- .data
-  202005fc    202005fc    0000025d   00000000    rw- .bss
+  20200600    20200600    00000261   00000000    rw- .bss
 20207e00    20207e00    00000200   00000000    rw-
   20207e00    20207e00    00000200   00000000    rw- .stack
 
@@ -173,11 +173,11 @@ section   page    origin      length       input sections
                   202005f8    00000001     ch340.o (.data.is_timer_uart_ch340_enabled)
                   202005f9    00000001     ch340.o (.data.is_uart_ch340_recv_done)
 
-.bss       0    202005fc    0000025d     UNINITIALIZED
-                  202005fc    000001f4     (.common:ch340_rx_pack)
-                  202007f0    00000064     (.common:ch340_tx_package)
-                  20200854    00000004     (.common:SYSTEMCLOCK)
-                  20200858    00000001     (.common:ch340_rx_byte)
+.bss       0    20200600    00000261     UNINITIALIZED
+                  20200600    000001f4     (.common:ch340_rx_pack)
+                  202007f4    00000064     (.common:ch340_tx_package)
+                  20200858    00000008     (.common:SYSTEMCLOCK)
+                  20200860    00000001     (.common:ch340_rx_byte)
 
 .stack     0    20207e00    00000200     UNINITIALIZED
                   20207e00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
@@ -206,9 +206,9 @@ MODULE SUMMARY
        Total:                         452     0         607    
                                                                
     .\hardware\delay\
-       delay.o                        12      0         4      
+       delay.o                        12      0         8      
     +--+------------------------------+-------+---------+---------+
-       Total:                         12      0         4      
+       Total:                         12      0         8      
                                                                
     .\hardware\oled\
        OLED.o                         4048    0         1520   
@@ -275,14 +275,14 @@ MODULE SUMMARY
        Stack:                         0       0         512    
        Linker Generated:              0       986       0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   13110   1533      2647   
+       Grand Total:                   13110   1533      2651   
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 0000394c records: 2, size/record: 8, table size: 16
 	.data: load addr=00003580, load size=000003b6 bytes, run addr=20200000, run size=000005fa bytes, compression=lzss
-	.bss: load addr=00003944, load size=00000008 bytes, run addr=202005fc, run size=0000025d bytes, compression=zero_init
+	.bss: load addr=00003944, load size=00000008 bytes, run addr=20200600, run size=00000261 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -352,7 +352,7 @@ address   name
 00002739  SYSCFG_DL_UART_CH340_init      
 00003295  SYSCFG_DL_init                 
 00002f65  SYSCFG_DL_initPower            
-20200854  SYSTEMCLOCK                    
+20200858  SYSTEMCLOCK                    
 00001c9b  SysTick_Handler                
 00001c9b  TIMA0_IRQHandler               
 00001c9b  TIMA1_IRQHandler               
@@ -452,11 +452,11 @@ UNDEFED   _system_post_cinit
 0000302d  atoi                           
 ffffffff  binit                          
 000032b1  ch340_init                     
-20200858  ch340_rx_byte                  
+20200860  ch340_rx_byte                  
 202005f4  ch340_rx_cnt                   
 202005f6  ch340_rx_len                   
-202005fc  ch340_rx_pack                  
-202007f0  ch340_tx_package               
+20200600  ch340_rx_pack                  
+202007f4  ch340_tx_package               
 0000338d  delay_init                     
 00002b6d  frexp                          
 00002b6d  frexpl                         
@@ -638,10 +638,10 @@ address   name
 202005f6  ch340_rx_len                   
 202005f8  is_timer_uart_ch340_enabled    
 202005f9  is_uart_ch340_recv_done        
-202005fc  ch340_rx_pack                  
-202007f0  ch340_tx_package               
-20200854  SYSTEMCLOCK                    
-20200858  ch340_rx_byte                  
+20200600  ch340_rx_pack                  
+202007f4  ch340_tx_package               
+20200858  SYSTEMCLOCK                    
+20200860  ch340_rx_byte                  
 20207e00  __stack                        
 20208000  __STACK_END                    
 ffffffff  __TI_pprof_out_hndl            

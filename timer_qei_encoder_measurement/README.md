@@ -5,10 +5,10 @@
 * [现象](#现象)
 * [问题](#问题)
 
-<font color="red">**（不要接5V电压的编码器）**</font>
+<font color="red">**（不要接 5V 电压的编码器）**</font>
 
 ## 简介
-定时器正交编码器接口 (Quadrature Encoder Interface) 的测试。（不想使用，不稳定。）
+定时器正交编码器接口 (Quadrature Encoder Interface) 读取编码器脉冲信号进行计数。（不想使用，不稳定。）
 
 ## 器件
 - 立创地猛星核心板，MSPM0G3507-48Pin 芯片

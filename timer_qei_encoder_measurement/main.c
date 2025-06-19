@@ -54,10 +54,10 @@ int main(void)
         OLED_Printf(0, 16, OLED_8X16, "Cnt: %d     ", DL_Timer_getTimerCount(QEI_ENCODER_INST));
 
         /*显示编码器转动方向*/
-        if (DL_Timer_getQEIDirection(QEI_ENCODER_INST) == DL_TIMER_QEI_DIR_DOWN) {
-            OLED_Printf(0, 32, OLED_8X16, "Dir: Down");
-        } else {
+        if (DL_Timer_getQEIDirection(QEI_ENCODER_INST) != DL_TIMER_QEI_DIR_DOWN) {
             OLED_Printf(0, 32, OLED_8X16, "Dir: up  ");
+        } else {
+            OLED_Printf(0, 32, OLED_8X16, "Dir: Down");
         }
 
         /*更新OLED显示*/
