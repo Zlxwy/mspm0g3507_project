@@ -72,8 +72,8 @@
 | ---- | --- | --- | --- |
 | PB6 | GPIO_OUTPUT | OLED_SCL | OLED 屏幕显示信息 |
 | PB7 | GPIO_OUTPUT | OLED_SDA | OLED 屏幕显示信息 |
-| PA26 | GPIO_INPUT | 编码器 A 相 | 读取编码器脉冲信号 |
-| PA27 | GPIO_INPUT | 编码器 B 相 | 读取编码器脉冲信号 |
+| PA26 | GPIO_INPUT | 编码器 A 相引脚 | 读取编码器 A 相脉冲信号 |
+| PA27 | GPIO_INPUT | 编码器 A 相引脚 | 读取编码器 B 相脉冲信号 |
 
 ## 现象
 编译、下载、复位后，核心板上LED熄灭，

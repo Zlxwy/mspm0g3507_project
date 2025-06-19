@@ -45,18 +45,24 @@ int main(void)
     OLED_Printf(0, 32, OLED_8X16, "Dir: "); // 编码器转动方向
     OLED_Update();
 
-    NVIC_ClearPendingIRQ(QEI_ENCODER_INST_INT_IRQN);
-    NVIC_EnableIRQ(QEI_ENCODER_INST_INT_IRQN);
-    DL_Timer_startCounter(QEI_ENCODER_INST);
+    NVIC_ClearPendingIRQ(QEI_ENCODER_INST_INT_IRQN); // 清除可能的中断标志位
+    NVIC_EnableIRQ(QEI_ENCODER_INST_INT_IRQN); // 开启中断
+    DL_Timer_startCounter(QEI_ENCODER_INST); // 启动编码器定时器
 
     while (true) {
+        /*显示编码器计数值*/
         OLED_Printf(0, 16, OLED_8X16, "Cnt: %d     ", DL_Timer_getTimerCount(QEI_ENCODER_INST));
+
+        /*显示编码器转动方向*/
         if (DL_Timer_getQEIDirection(QEI_ENCODER_INST) == DL_TIMER_QEI_DIR_DOWN) {
             OLED_Printf(0, 32, OLED_8X16, "Dir: Down");
         } else {
             OLED_Printf(0, 32, OLED_8X16, "Dir: up  ");
         }
+
+        /*更新OLED显示*/
         OLED_Update();
+
         delay_ms(10);
     }
 }

@@ -58,46 +58,43 @@ volatile bool isEncoderRotatingForward = false; // 编码器旋转方向
 void GROUP1_IRQHandler(void) {
     uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN); // 获取GPIOA端口的待处理中断
 
-    
-    // 编码器A相引脚中断
-    if((gpioA & GPIO_ENCODER_PHASE_A_PIN) == // 将待处理中断与要检查的引脚进行按位与操作
-                GPIO_ENCODER_PHASE_A_PIN) { // 如果结果等于该引脚值
-        if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) {
-            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) {
+    if((gpioA & GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) { // 如果是A相引脚中断
+        if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) { // 如果此时A相引脚高电平
+            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) { // 如果此时B相引脚高电平
                 isEncoderRotatingForward = true;
-                EncoderCount++ ; // 引脚A上升沿时，引脚B为高电平，判定正转
-            } else {
+                EncoderCount++ ; // A相引脚上升沿时，B相引脚高电平，判定正转
+            } else { // 如果此时B相引脚低电平
                 isEncoderRotatingForward = false;
-                EncoderCount-- ; // 引脚A上升沿时，引脚B为低电平，判定反转
+                EncoderCount-- ; // A相引脚上升沿时，B相引脚低电平，判定反转
             }
-        } else {
-            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) {
+        } else { // 如果此时A相引脚低电平
+            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) { // 如果此时B相引脚高电平
                 isEncoderRotatingForward = false;
-                EncoderCount-- ; // 引脚A下降沿时，引脚B为高电平，判定反转
-            } else {
+                EncoderCount-- ; // A相引脚下降沿时，B相引脚高电平，判定反转
+            } else { // 如果此时B相引脚低电平
                 isEncoderRotatingForward = true;
-                EncoderCount++ ; // 引脚A下降沿时，引脚B为低电平，判定正转
+                EncoderCount++ ; // A相引脚下降沿时，B相引脚低电平，判定正转
             }
         }
-        DL_GPIO_clearInterruptStatus(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN); // 清除引脚上的中断状态
+        DL_GPIO_clearInterruptStatus(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN); // 清除A相引脚上的中断状态
     }
-    // 编码器B相引脚中断
-    if (gpioA & GPIO_ENCODER_PHASE_B_PIN) {
-        if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) {
-            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) {
+
+    if ((gpioA & GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) { // 如果是B相引脚中断
+        if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN) == GPIO_ENCODER_PHASE_B_PIN) { // 如果此时B相引脚高电平
+            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) { // 如果此时A相引脚高电平
                 isEncoderRotatingForward = false;
-                EncoderCount--; // 引脚B上升沿时，引脚A为高电平，判定反转
-            } else {
+                EncoderCount--; // B相引脚上升沿时，A相引脚高电平，判定反转
+            } else { // 如果此时A相引脚低电平
                 isEncoderRotatingForward = true;
-                EncoderCount++; // 引脚B上升沿时，引脚A为低电平，判定正转
+                EncoderCount++; // B相引脚上升沿时，A相引脚低电平，判定正转
             }
-        } else {
-            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) {
+        } else { // 如果此时B相引脚低电平
+            if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) { // 如果此时A相引脚高电平
                 isEncoderRotatingForward = true;
-                EncoderCount++; // 引脚B下降沿时，引脚A为高电平，判定正转
-            } else {
+                EncoderCount++; // B相引脚下降沿时，A相引脚高电平，判定正转
+            } else { // 如果此时A相引脚低电平
                 isEncoderRotatingForward = false;
-                EncoderCount--; // 引脚B下降沿时，引脚A为低电平，判定反转
+                EncoderCount--; // B相引脚下降沿时，A相引脚低电平，判定反转
             }
         }
         DL_GPIO_clearInterruptStatus(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_B_PIN); // 清除引脚上的中断状态
@@ -118,14 +115,20 @@ int main(void)
     NVIC_ClearPendingIRQ(GPIO_ENCODER_INT_IRQN);
     NVIC_EnableIRQ(GPIO_ENCODER_INT_IRQN);
 
-    while (1) {
+    while (true) {
+        /*显示编码器计数值*/
         OLED_Printf(0, 16, OLED_8X16, "Cnt: %d     ", EncoderCount);
+
+        /*显示编码器转动方向*/
         if (isEncoderRotatingForward == false) {
             OLED_Printf(0, 32, OLED_8X16, "Dir: Down   ");
         } else {
             OLED_Printf(0, 32, OLED_8X16, "Dir: up     ");
         }
+
+        /*更新OLED显示*/
         OLED_Update();
+        
         delay_ms(10);
     }
 }

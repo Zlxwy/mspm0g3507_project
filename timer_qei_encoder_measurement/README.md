@@ -20,9 +20,9 @@
 ### Switch Board or Device
 - 在 syscfg 右下角点击 **SWITCH** ，选择封装为 **LQFP-48** ，点击 **Confirm** 确认。
 - 左侧栏 **Project Configuration** 会有一个报错、一个警告，在 **Select Device** 重新选择一下芯片型号，忽略掉警告就行。
-### GPIO
+### GPIO (1 Added)
 * Name: <u>GPIO_OLED</u>
-  - Group Pins
+  - Group Pins (2 added)
     * Name: <u>SCL</u>
     * Direction: <u>Output</u>
     * Initial Value: <u>Set</u>
@@ -56,8 +56,8 @@
 | ---- | --- | --- | --- |
 | PB6 | GPIO_OUTPUT | OLED_SCL | OLED 屏幕显示信息 |
 | PB7 | GPIO_OUTPUT | OLED_SDA | OLED 屏幕显示信息 |
-| PA26 | TIMER_QEI_CC0 | Encoder_A | 编码器 A 相脉冲信号 |
-| PA27 | TIMER_QEI_CC1 | Encoder_B | 编码器 B 相脉冲信号 |
+| PA26 | TIMER_QEI_CC0 | 编码器 A 相引脚 | 读取编码器 A 相脉冲信号 |
+| PA27 | TIMER_QEI_CC1 | 编码器 A 相引脚 | 读取编码器 B 相脉冲信号 |
 
 ## 现象
 编译、下载、复位后
