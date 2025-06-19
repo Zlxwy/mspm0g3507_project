@@ -1,1 +1,2 @@
 *.mk linguist-language=None
+*.d linguist-language=None
