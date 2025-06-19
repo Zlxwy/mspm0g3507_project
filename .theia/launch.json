@@ -174,15 +174,6 @@
             ]
         },
         {
-            "name": "i2c_hardware_oled128x64_test",
-            "type": "ccs-debug",
-            "request": "launch",
-            "projectInfo": {
-                "name": "i2c_hardware_oled128x64_test",
-                "resourceId": "/i2c_hardware_oled128x64_test"
-            }
-        },
-        {
             "name": "uart_rx_dma_read_jy901s_data",
             "type": "ccs-debug",
             "request": "launch",

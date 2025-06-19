@@ -81,7 +81,7 @@ extern "C" {
 #define I2C_OLED_INST                                                       I2C0
 #define I2C_OLED_INST_IRQHandler                                 I2C0_IRQHandler
 #define I2C_OLED_INST_INT_IRQN                                     I2C0_INT_IRQn
-#define I2C_OLED_BUS_SPEED_HZ                                             800000
+#define I2C_OLED_BUS_SPEED_HZ                                            1600000
 #define GPIO_I2C_OLED_SDA_PORT                                             GPIOA
 #define GPIO_I2C_OLED_SDA_PIN                                      DL_GPIO_PIN_0
 #define GPIO_I2C_OLED_IOMUX_SDA                                   (IOMUX_PINCM1)

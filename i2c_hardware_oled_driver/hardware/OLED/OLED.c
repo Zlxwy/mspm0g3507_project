@@ -113,7 +113,7 @@ static void i2c_writeOneByte(uint8_t EquiAddr, uint8_t RegAddr, uint8_t abyte) {
     uint8_t buff[2] = {RegAddr, abyte};
     DL_I2C_fillControllerTXFIFO(I2C_OLED_INST, buff, 2);
     while (!(DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_IDLE));
-    DL_I2C_startControllerTransfer(I2C_OLED_INST,EquiAddr, DL_I2C_CONTROLLER_DIRECTION_TX, 2);
+    DL_I2C_startControllerTransfer(I2C_OLED_INST, EquiAddr, DL_I2C_CONTROLLER_DIRECTION_TX, 2);
     while (DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_BUSY_BUS);
 }
 
@@ -125,13 +125,15 @@ static void i2c_writeOneByte(uint8_t EquiAddr, uint8_t RegAddr, uint8_t abyte) {
  * @param Len 发送数据的长度
  */
 static void i2c_writeBytes(uint8_t EquiAddr, uint8_t RegAddr, uint8_t *SendArray, uint16_t Len) {
-    uint8_t array[256];
-    array[0] = RegAddr;
-    for(uint16_t i=0; i<Len; i++) array[i+1] = SendArray[i];
-    DL_I2C_fillControllerTXFIFO(I2C_OLED_INST, array, Len+1);
-    while (!(DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_IDLE));
-    DL_I2C_startControllerTransfer(I2C_OLED_INST,EquiAddr, DL_I2C_CONTROLLER_DIRECTION_TX, Len+1);
-    while (DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_BUSY_BUS);
+    // uint8_t array[256];
+    // array[0] = RegAddr;
+    // for(uint16_t i=0; i<Len; i++) array[i+1] = SendArray[i];
+    // DL_I2C_fillControllerTXFIFO(I2C_OLED_INST, array, Len+1);
+    // while (!(DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_IDLE));
+    // DL_I2C_startControllerTransfer(I2C_OLED_INST, EquiAddr, DL_I2C_CONTROLLER_DIRECTION_TX, Len+1);
+    // while (DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_BUSY_BUS);
+    uint16_t cnt = 0;
+    while (Len--) i2c_writeOneByte(EquiAddr, RegAddr, SendArray[cnt++]);
 }
 
 /**
@@ -159,12 +161,12 @@ static uint8_t i2c_readOneByte(uint8_t EquiAddr, uint8_t RegAddr) {
  * @param Len 接收数据的长度
  */
 static void i2c_readBytes(uint8_t EquiAddr, uint8_t RegAddr, uint8_t *RecvArray, uint16_t Len) {
-    DL_I2C_fillControllerTXFIFO(I2C_OLED_INST,&RegAddr,1);
+    DL_I2C_fillControllerTXFIFO(I2C_OLED_INST, &RegAddr, 1);
     while (!(DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_IDLE));
-    DL_I2C_startControllerTransfer(I2C_OLED_INST,EquiAddr,DL_I2C_CONTROLLER_DIRECTION_TX,1);
+    DL_I2C_startControllerTransfer(I2C_OLED_INST, EquiAddr, DL_I2C_CONTROLLER_DIRECTION_TX, 1);
     while (DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_BUSY_BUS);
     while (!(DL_I2C_getControllerStatus(I2C_OLED_INST) & DL_I2C_CONTROLLER_STATUS_IDLE));
-    DL_I2C_startControllerTransfer(I2C_OLED_INST,EquiAddr,DL_I2C_CONTROLLER_DIRECTION_RX,Len);
+    DL_I2C_startControllerTransfer(I2C_OLED_INST, EquiAddr, DL_I2C_CONTROLLER_DIRECTION_RX, Len);
     while(Len--) {
         while (DL_I2C_isControllerRXFIFOEmpty(I2C_OLED_INST));
         *(RecvArray++) = DL_I2C_receiveControllerData(I2C_OLED_INST);

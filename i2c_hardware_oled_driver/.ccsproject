@@ -4,7 +4,7 @@
 	<ccsVariant value="50:Theia-based"/>
 	<ccsVersion value="70.2.0"/>
 	<deviceFamily value="TMS470"/>
-	<connection value="common/targetdb/connections/TIXDS110_Connection.xml"/>
+	<connection value="common/targetdb/connections/segger_j-link_connection.xml"/>
 	<executableActions value=""/>
 	<createSlaveProjects value=""/>
 	<ignoreDefaultDeviceSettings value="true"/>

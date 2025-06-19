@@ -5,7 +5,7 @@
 * [现象](#现象)
 
 ## 简介
-使用芯片的硬件 I2C 外设，控制 OLED 进行显示，移植自江协科技的 OLED 驱动库。
+使用芯片的硬件 I2C 外设，控制 OLED 进行显示，移植自江协科技的 OLED 驱动库（引脚选择较少，不想使用）。
 - [江协科技 0.96 英寸 OLED 视频教程](https://www.bilibili.com/video/BV1EN41177Pc)
 - [江协科技 0.96 英寸 OLED 资料下载](https://jiangxiekeji.com/download.html)
 
@@ -28,7 +28,7 @@
   * Enable Controller Mode: <u>select</u>
   - I2C Controller Basic Configuration
     * Standard Bus Speed: <u>Fast Mode Plus (1MHz)</u>
-    * Custom Bus Speed (Hz): <u>800000</u>
+    * Custom Bus Speed (Hz): <u>1600000 (1.6MHz)</u>
 ### 调试配置
 - SEGGER J-Link Emulator
 

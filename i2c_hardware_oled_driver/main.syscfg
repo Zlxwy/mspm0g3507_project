@@ -19,7 +19,7 @@ const ProjectConfig = scripting.addModule("/ti/project_config/ProjectConfig");
 I2C1.$name                             = "I2C_OLED";
 I2C1.basicEnableController             = true;
 I2C1.basicControllerStandardBusSpeed   = "FastPlus";
-I2C1.basicControllerBusSpeed           = 800000;
+I2C1.basicControllerBusSpeed           = 1600000;
 I2C1.peripheral.$assign                = "I2C0";
 I2C1.peripheral.sdaPin.$assign         = "PA0";
 I2C1.peripheral.sclPin.$assign         = "PA1";
@@ -41,3 +41,4 @@ SYSCTL.forceDefaultClkConfig = true;
 SYSCTL.peripheral.$assign    = "SYSCTL";
 
 ProjectConfig.deviceSpin = "MSPM0G3507";
+scripting.suppress("Migrating requires going through the Switch Board or Device menu in the Device View section\\.", ProjectConfig, "deviceSpin");
