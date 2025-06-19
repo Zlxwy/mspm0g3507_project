@@ -1,6 +1,6 @@
 #include "delay.h"
 
-uint32_t SYSTEMCLOCK;
+uint64_t SYSTEMCLOCK;
 void delay_init(uint32_t sysclock) {SYSTEMCLOCK=sysclock;}
 void delay_ms(uint32_t ms_cycles) {while(ms_cycles--) DL_Common_delayCycles(SYSTEMCLOCK/1000);}
 void delay_us(uint32_t us_cycles) {while(us_cycles--) DL_Common_delayCycles(SYSTEMCLOCK/1000000);}

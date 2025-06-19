@@ -1,6 +1,6 @@
 #include "delay.h"
 
-uint32_t SYSTEMCLOCK;
+uint64_t SYSTEMCLOCK;
 void delay_init(uint32_t sysclock) {
     SYSTEMCLOCK = sysclock;
 }

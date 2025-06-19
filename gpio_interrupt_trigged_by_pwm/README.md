@@ -17,7 +17,7 @@
 - 在syscfg右下角点击 **SWITCH** ，选择封装为 **LQFP-48** ，点击 **Confirm** 确认。
 - 左侧栏 **Project Configuration** 会有一个报错、一个警告，在 **Select Device** 重新选择一下芯片型号，忽略掉警告就行。
 ### TIMER-PWM
-- Name: <u>PWM_TRIG</u>
+* Name: <u>PWM_TRIG</u>
 - PinMux
   * Capture/Compare Pin 0: <u>PA12</u>
 - Basic Configuration
