@@ -21,7 +21,7 @@
 ### GPIO
 * Name: <u>GPIO_OLED</u>
   - Group Pins (2 added)
-    * Name: <u>PIN_SCL</u>
+    * Name: <u>SCL</u>
     * Direction: <u>Output</u>
     * Initial Value: <u>Set</u>
     - Digital IOMUX Features
@@ -29,7 +29,7 @@
     * Assigned Port: <u>PORTB</u>
     * Assigned Pin: <u>6</u>
     * 
-    * Name: <u>PIN_SDA</u>
+    * Name: <u>SDA</u>
     * Direction: <u>Output</u>
     * Initial Value: <u>Set</u>
     - Digital IOMUX Features

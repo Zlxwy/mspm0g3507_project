@@ -101,12 +101,12 @@ extern "C" {
 /* Port definition for Pin Group GPIO_OLED */
 #define GPIO_OLED_PORT                                                   (GPIOB)
 
-/* Defines for PIN_SCL: GPIOB.6 with pinCMx 23 on package pin 20 */
-#define GPIO_OLED_PIN_SCL_PIN                                    (DL_GPIO_PIN_6)
-#define GPIO_OLED_PIN_SCL_IOMUX                                  (IOMUX_PINCM23)
-/* Defines for PIN_SDA: GPIOB.7 with pinCMx 24 on package pin 21 */
-#define GPIO_OLED_PIN_SDA_PIN                                    (DL_GPIO_PIN_7)
-#define GPIO_OLED_PIN_SDA_IOMUX                                  (IOMUX_PINCM24)
+/* Defines for SCL: GPIOB.6 with pinCMx 23 on package pin 20 */
+#define GPIO_OLED_SCL_PIN                                        (DL_GPIO_PIN_6)
+#define GPIO_OLED_SCL_IOMUX                                      (IOMUX_PINCM23)
+/* Defines for SDA: GPIOB.7 with pinCMx 24 on package pin 21 */
+#define GPIO_OLED_SDA_PIN                                        (DL_GPIO_PIN_7)
+#define GPIO_OLED_SDA_IOMUX                                      (IOMUX_PINCM24)
 
 /* clang-format on */
 

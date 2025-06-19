@@ -101,8 +101,8 @@ void OLED_Delay(void) { delay_cycles(3); }
 void OLED_W_SCL(uint8_t BitValue)
 {
     /*根据BitValue的值，将SCL置高电平或者低电平*/
-    if (BitValue != 0) DL_GPIO_setPins(GPIO_OLED_PORT, GPIO_OLED_PIN_SCL_PIN);
-    else DL_GPIO_clearPins(GPIO_OLED_PORT, GPIO_OLED_PIN_SCL_PIN);
+    if (BitValue != 0) DL_GPIO_setPins(GPIO_OLED_PORT, GPIO_OLED_SCL_PIN);
+    else DL_GPIO_clearPins(GPIO_OLED_PORT, GPIO_OLED_SCL_PIN);
     
     OLED_Delay();
 }
@@ -118,8 +118,8 @@ void OLED_W_SCL(uint8_t BitValue)
 void OLED_W_SDA(uint8_t BitValue)
 {
     /*根据BitValue的值，将SDA置高电平或者低电平*/
-    if (BitValue != 0) DL_GPIO_setPins(GPIO_OLED_PORT, GPIO_OLED_PIN_SDA_PIN);
-    else DL_GPIO_clearPins(GPIO_OLED_PORT, GPIO_OLED_PIN_SDA_PIN);
+    if (BitValue != 0) DL_GPIO_setPins(GPIO_OLED_PORT, GPIO_OLED_SDA_PIN);
+    else DL_GPIO_clearPins(GPIO_OLED_PORT, GPIO_OLED_SDA_PIN);
 
     OLED_Delay();
 }

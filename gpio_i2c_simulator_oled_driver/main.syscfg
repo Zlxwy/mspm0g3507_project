@@ -18,16 +18,16 @@ const ProjectConfig = scripting.addModule("/ti/project_config/ProjectConfig");
  */
 GPIO1.$name                              = "GPIO_OLED";
 GPIO1.associatedPins.create(2);
-GPIO1.associatedPins[0].$name            = "PIN_SCL";
 GPIO1.associatedPins[0].initialValue     = "SET";
 GPIO1.associatedPins[0].internalResistor = "PULL_UP";
 GPIO1.associatedPins[0].assignedPort     = "PORTB";
 GPIO1.associatedPins[0].assignedPin      = "6";
-GPIO1.associatedPins[1].$name            = "PIN_SDA";
+GPIO1.associatedPins[0].$name            = "SCL";
 GPIO1.associatedPins[1].initialValue     = "SET";
 GPIO1.associatedPins[1].internalResistor = "PULL_UP";
 GPIO1.associatedPins[1].assignedPort     = "PORTB";
 GPIO1.associatedPins[1].assignedPin      = "7";
+GPIO1.associatedPins[1].$name            = "SDA";
 
 const Board                       = scripting.addModule("/ti/driverlib/Board", {}, false);
 Board.peripheral.$assign          = "DEBUGSS";
@@ -38,6 +38,7 @@ SYSCTL.forceDefaultClkConfig = true;
 SYSCTL.peripheral.$assign    = "SYSCTL";
 
 ProjectConfig.deviceSpin = "MSPM0G3507";
+scripting.suppress("Migrating requires going through the Switch Board or Device menu in the Device View section\\.", ProjectConfig, "deviceSpin");
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future

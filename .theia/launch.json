@@ -203,6 +203,50 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "timer_qei_encoder_measurement",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "timer_qei_encoder_measurement",
+                "resourceId": "/timer_qei_encoder_measurement"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "gpio_interrupt_encoder_measurement",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "gpio_interrupt_encoder_measurement",
+                "resourceId": "/gpio_interrupt_encoder_measurement"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
