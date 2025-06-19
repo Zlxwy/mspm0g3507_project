@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Thu Jun 19 14:41:11 2025
+>> Linked Thu Jun 19 17:41:52 2025
 
 OUTPUT FILE NAME:   <timer_qei_encoder_measurement.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00002da5
@@ -11,7 +11,7 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00020000  00003b70  0001c490  R  X
+  FLASH                 00000000   00020000  00003b60  0001c4a0  R  X
   SRAM                  20200000   00008000  00000680  00007980  RW X
   BCR_CONFIG            41c00000   00000080  00000000  00000080  R   
   BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
@@ -21,11 +21,11 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00003b70   00003b70    r-x
+00000000    00000000    00003b60   00003b60    r-x
   00000000    00000000    000000c0   000000c0    r-- .intvecs
   000000c0    000000c0    00002eb0   00002eb0    r-x .text
-  00002f70    00002f70    00000bd0   00000bd0    r-- .rodata
-  00003b40    00003b40    00000030   00000030    r-- .cinit
+  00002f70    00002f70    00000bc0   00000bc0    r-- .rodata
+  00003b30    00003b30    00000030   00000030    r-- .cinit
 20200000    20200000    00000480   00000000    rw-
   20200000    20200000    0000047c   00000000    rw- .bss
   2020047c    2020047c    00000004   00000000    rw- .data
@@ -122,15 +122,15 @@ section   page    origin      length       input sections
                   00002f66    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
                   00002f6a    00000006     --HOLE-- [fill = 0]
 
-.cinit     0    00003b40    00000030     
-                  00003b40    0000000c     (__TI_handler_table)
-                  00003b4c    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00003b54    00000007     (.cinit..data.load) [load image, compression = lzss]
-                  00003b5b    00000001     --HOLE-- [fill = 0]
-                  00003b5c    00000010     (__TI_cinit_table)
-                  00003b6c    00000004     --HOLE-- [fill = 0]
+.cinit     0    00003b30    00000030     
+                  00003b30    0000000c     (__TI_handler_table)
+                  00003b3c    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00003b44    00000007     (.cinit..data.load) [load image, compression = lzss]
+                  00003b4b    00000001     --HOLE-- [fill = 0]
+                  00003b4c    00000010     (__TI_cinit_table)
+                  00003b5c    00000004     --HOLE-- [fill = 0]
 
-.rodata    0    00002f70    00000bd0     
+.rodata    0    00002f70    00000bc0     
                   00002f70    000005f0     OLED_Data.o (.rodata.OLED_F8x16)
                   00003560    0000023a     OLED_Data.o (.rodata.OLED_F6x8)
                   0000379a    0000022b     OLED_Data.o (.rodata.OLED_CF16x16)
@@ -138,13 +138,13 @@ section   page    origin      length       input sections
                   000039d0    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
                   00003ad1    00000011            : _printfi.c.obj (.rodata.str1.10348868589481759720.1)
                   00003ae2    00000011            : _printfi.c.obj (.rodata.str1.15363888844622738466.1)
-                  00003af3    0000000d     main.o (.rodata.str1.12180500075719773345.1)
-                  00003b00    0000000d     main.o (.rodata.str1.17100691992556644108.1)
-                  00003b0d    0000000d     main.o (.rodata.str1.18227636981041470289.1)
-                  00003b1a    0000000d     main.o (.rodata.str1.2846389346932560359.1)
-                  00003b27    0000000a     main.o (.rodata.str1.15159059442110792349.1)
-                  00003b31    00000003     ti_msp_dl_config.o (.rodata.gQEI_ENCODERClockConfig)
-                  00003b34    0000000c     --HOLE-- [fill = 0]
+                  00003af3    0000000d     main.o (.rodata.str1.18227636981041470289.1)
+                  00003b00    0000000a     main.o (.rodata.str1.12180500075719773345.1)
+                  00003b0a    0000000a     main.o (.rodata.str1.15159059442110792349.1)
+                  00003b14    0000000a     main.o (.rodata.str1.2846389346932560359.1)
+                  00003b1e    00000006     main.o (.rodata.str1.17100691992556644108.1)
+                  00003b24    00000003     ti_msp_dl_config.o (.rodata.gQEI_ENCODERClockConfig)
+                  00003b27    00000009     --HOLE-- [fill = 0]
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -175,10 +175,10 @@ MODULE SUMMARY
        ------                         ----    -------   -------
     .\
        ti_msp_dl_config.o             272     3         120    
-       main.o                         188     73        0      
+       main.o                         188     60        0      
        startup_mspm0g350x_ticlang.o   6       192       0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         466     268       120    
+       Total:                         466     255       120    
                                                                
     .\hardware\OLED\
        OLED.o                         3664    0         1024   
@@ -250,19 +250,19 @@ MODULE SUMMARY
        Stack:                         0       0         512    
        Linker Generated:              0       43        0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   11938   3247      1664   
+       Grand Total:                   11938   3234      1664   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00003b5c records: 2, size/record: 8, table size: 16
-	.bss: load addr=00003b4c, load size=00000008 bytes, run addr=20200000, run size=0000047c bytes, compression=zero_init
-	.data: load addr=00003b54, load size=00000007 bytes, run addr=2020047c, run size=00000004 bytes, compression=lzss
+__TI_cinit_table @ 00003b4c records: 2, size/record: 8, table size: 16
+	.bss: load addr=00003b3c, load size=00000008 bytes, run addr=20200000, run size=0000047c bytes, compression=zero_init
+	.data: load addr=00003b44, load size=00000007 bytes, run addr=2020047c, run size=00000004 bytes, compression=lzss
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00003b40 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00003b30 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -347,11 +347,11 @@ address   name
 00000000  __TI_ATRegion2_region_sz      
 00000000  __TI_ATRegion2_src_addr       
 00000000  __TI_ATRegion2_trg_addr       
-00003b5c  __TI_CINIT_Base               
-00003b6c  __TI_CINIT_Limit              
-00003b6c  __TI_CINIT_Warm               
-00003b40  __TI_Handler_Table_Base       
-00003b4c  __TI_Handler_Table_Limit      
+00003b4c  __TI_CINIT_Base               
+00003b5c  __TI_CINIT_Limit              
+00003b5c  __TI_CINIT_Warm               
+00003b30  __TI_Handler_Table_Base       
+00003b3c  __TI_Handler_Table_Limit      
 00002c19  __TI_auto_init_nobinit_nopinit
 00002689  __TI_decompress_lzss          
 00002eb1  __TI_decompress_none          
@@ -584,11 +584,11 @@ address   name
 0000379a  OLED_CF16x16                  
 000039d0  __aeabi_ctype_table_          
 000039d0  __aeabi_ctype_table_C         
-00003b40  __TI_Handler_Table_Base       
-00003b4c  __TI_Handler_Table_Limit      
-00003b5c  __TI_CINIT_Base               
-00003b6c  __TI_CINIT_Limit              
-00003b6c  __TI_CINIT_Warm               
+00003b30  __TI_Handler_Table_Base       
+00003b3c  __TI_Handler_Table_Limit      
+00003b4c  __TI_CINIT_Base               
+00003b5c  __TI_CINIT_Limit              
+00003b5c  __TI_CINIT_Warm               
 20200000  OLED_DisplayBuf               
 20200000  __start___llvm_prf_bits       
 20200000  __start___llvm_prf_cnts       
