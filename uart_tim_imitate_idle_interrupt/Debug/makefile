@@ -145,7 +145,7 @@ all: $(OBJS) $(GEN_CMDS)
 uart_tim_imitate_idle_interrupt.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"uart_tim_imitate_idle_interrupt.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_tim_imitate_idle_interrupt" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/uart_tim_imitate_idle_interrupt/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="uart_tim_imitate_idle_interrupt_linkInfo.xml" -Wl,--rom_model -o "uart_tim_imitate_idle_interrupt.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"uart_tim_imitate_idle_interrupt.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_examples/uart_tim_imitate_idle_interrupt" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_examples/uart_tim_imitate_idle_interrupt/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="uart_tim_imitate_idle_interrupt_linkInfo.xml" -Wl,--rom_model -o "uart_tim_imitate_idle_interrupt.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

@@ -143,7 +143,7 @@ all: $(OBJS) $(GEN_CMDS)
 i2c_hardware_oled_driver.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"i2c_hardware_oled_driver.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled_driver" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/i2c_hardware_oled_driver/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="i2c_hardware_oled_driver_linkInfo.xml" -Wl,--rom_model -o "i2c_hardware_oled_driver.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"i2c_hardware_oled_driver.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_examples/i2c_hardware_oled_driver" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_examples/i2c_hardware_oled_driver/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="i2c_hardware_oled_driver_linkInfo.xml" -Wl,--rom_model -o "i2c_hardware_oled_driver.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

@@ -139,7 +139,7 @@ all: $(OBJS) $(GEN_CMDS)
 timer_pwm_ctrl_led_breathing.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"timer_pwm_ctrl_led_breathing.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/timer_pwm_ctrl_led_breathing" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_example/timer_pwm_ctrl_led_breathing/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="timer_pwm_ctrl_led_breathing_linkInfo.xml" -Wl,--rom_model -o "timer_pwm_ctrl_led_breathing.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"timer_pwm_ctrl_led_breathing.map" -Wl,-i"C:/ti/mspm0_sdk_2_01_00_03/source" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_examples/timer_pwm_ctrl_led_breathing" -Wl,-i"E:/Controller/TI/ccs_project/mspm0g3507/workspace_examples/timer_pwm_ctrl_led_breathing/Debug/syscfg" -Wl,-i"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="timer_pwm_ctrl_led_breathing_linkInfo.xml" -Wl,--rom_model -o "timer_pwm_ctrl_led_breathing.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
