@@ -2,8 +2,8 @@
 * [器件列表](#器件列表)
 * [软件版本](#软件版本)
 * [文件夹说明](#文件夹说明)
-  * [peripheral_examples](#peripheral_examples)
   * [integrated_projects](#integrated_projects)
+  * [peripheral_examples](#peripheral_examples)
 
 > 每个工程内也都有一个 README
 
@@ -31,8 +31,8 @@
 
 ## 文件夹说明
 
-### peripheral_examples
-- 存放单独一个外设功能的使用示例。
-
 ### integrated_projects
 - 存放综合多个外设功能的工程项目。
+
+### peripheral_examples
+- 存放单独一个外设功能的使用示例。
