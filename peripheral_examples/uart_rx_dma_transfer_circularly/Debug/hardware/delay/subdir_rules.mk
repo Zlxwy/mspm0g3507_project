@@ -8,7 +8,7 @@ SHELL = cmd.exe
 hardware/delay/%.o: ../hardware/delay/%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: Arm Compiler'
-	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"E:/Controller/TI/ccs_project/mspm0g3507/mspm0g3507_ws_examples/uart_rx_dma_transfer_circularly" -I"E:/Controller/TI/ccs_project/mspm0g3507/mspm0g3507_ws_examples/uart_rx_dma_transfer_circularly/Debug" -I"C:/ti/mspm0_sdk_2_01_00_03/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_01_00_03/source" -I"E:/Controller/TI/ccs_project/mspm0g3507/mspm0g3507_ws_examples/uart_rx_dma_transfer_circularly/hardware/delay" -gdwarf-3 -MMD -MP -MF"hardware/delay/$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
+	"C:/ti/ccs2020/ccs/tools/compiler/ti-cgt-armllvm_4.0.3.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"E:/Controller/TI/ccs_project/mspm0g3507_project/peripheral_examples/uart_rx_dma_transfer_circularly" -I"E:/Controller/TI/ccs_project/mspm0g3507_project/peripheral_examples/uart_rx_dma_transfer_circularly/Debug" -I"C:/ti/mspm0_sdk_2_01_00_03/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_01_00_03/source" -I"E:/Controller/TI/ccs_project/mspm0g3507_project/peripheral_examples/uart_rx_dma_transfer_circularly/hardware/delay" -gdwarf-3 -MMD -MP -MF"hardware/delay/$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
