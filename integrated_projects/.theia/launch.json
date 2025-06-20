@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "gpio_interrupt_trigged_by_pwm",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "gpio_interrupt_trigged_by_pwm",
+                "resourceId": "/gpio_interrupt_trigged_by_pwm"
+            }
+        }
+    ]
+}
