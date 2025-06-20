@@ -1,5 +1,4 @@
 *.mk linguist-language=None
 *.d linguist-language=None
 makefile linguist-language=None
-
 *.cmd linguist-language=None
