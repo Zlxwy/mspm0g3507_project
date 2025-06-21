@@ -23,12 +23,12 @@
     bool ddiirr = dir; \
     DL_GPIO_writePinsVal(GPIO_MOTOR_PORT, GPIO_MOTOR_LIN1_PIN, ddiirr == MOTOR_DIR_DN ? GPIO_MOTOR_LIN1_PIN : 0); \
     DL_GPIO_writePinsVal(GPIO_MOTOR_PORT, GPIO_MOTOR_LIN2_PIN, ddiirr != MOTOR_DIR_DN ? GPIO_MOTOR_LIN2_PIN : 0); \
-} while (0) // 设置左轮转向方向（宏定义中传入的参数不能使用两次，因此这里创建一个临时变量接收宏定义传入的参数）
+} while (0) // 设置左轮转向方向（有些编译器宏定义中传入的参数不能使用两次，因此这里创建一个临时变量接收宏定义传入的参数）
 #define SET_MOTOR_R_DIR(dir) do { \
     bool ddiirr = dir; \
     DL_GPIO_writePinsVal(GPIO_MOTOR_PORT, GPIO_MOTOR_RIN1_PIN, ddiirr == MOTOR_DIR_DN ? GPIO_MOTOR_RIN1_PIN : 0); \
     DL_GPIO_writePinsVal(GPIO_MOTOR_PORT, GPIO_MOTOR_RIN2_PIN, ddiirr != MOTOR_DIR_DN ? GPIO_MOTOR_RIN2_PIN : 0); \
-} while (0) // 设置右轮转向方向（宏定义中传入的参数不能使用两次，因此这里创建一个临时变量接收宏定义传入的参数）
+} while (0) // 设置右轮转向方向（有些编译器宏定义中传入的参数不能使用两次，因此这里创建一个临时变量接收宏定义传入的参数）
 
 #define STOP_MOTOR_L do { \
     DL_GPIO_writePinsVal(GPIO_MOTOR_PORT, GPIO_MOTOR_LIN1_PIN, 0); \
