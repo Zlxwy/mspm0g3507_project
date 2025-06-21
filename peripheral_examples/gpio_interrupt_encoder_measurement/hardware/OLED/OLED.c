@@ -18,7 +18,6 @@
   */
 
 #include "ti_msp_dl_config.h"
-#include "delay.h" // 用于芯片初始上电的延时，以及电平变化的延时
 #include "OLED.h"
 #include <string.h>
 #include <math.h>
@@ -87,8 +86,8 @@ uint8_t OLED_DisplayBuf[8][128];
 /*引脚配置*********************/
 
 /*如果单片机速度过快，可在此添加适量延时，以避免超出I2C通信的最大速度*/
-// 实际测试发现，SSD1306芯片，需要在这里至少延时0.2us
-void OLED_Delay(void) { delay_cycles(3); }
+// 实际测试发现，SSD1306芯片，需要在这里至少延时0.1us
+void OLED_Delay(void) { delay_cycles(5); } // 约 0.16us
 
 /**
   * 函    数：OLED写SCL高低电平
@@ -133,13 +132,15 @@ void OLED_W_SDA(uint8_t BitValue)
   */
 void OLED_GPIO_Init(void)
 {
-    uint32_t i, j;
-    
     /*在初始化前，加入适量延时，待OLED供电稳定*/
-    delay_ms(100);
+    for (uint32_t i=0; i<1000; i++) {
+        for (uint32_t j=0; j<1000; j++) {
+            OLED_Delay();
+        }
+    }
 
     /*将SCL和SDA引脚配置为输出模式*/
-    // 在Sysconfig中配置两个引脚为输出模式，初始电平为高电平
+    // 在Sysconfig中配置了两个引脚为输出模式，初始电平为高电平
     
     /*释放SCL和SDA*/
     OLED_W_SCL(1);

@@ -2,13 +2,35 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "gpio_interrupt_trigged_by_pwm",
+            "name": "pwm_trigger_gpio_interrupt",
             "type": "ccs-debug",
             "request": "launch",
             "projectInfo": {
-                "name": "gpio_interrupt_trigged_by_pwm",
-                "resourceId": "/gpio_interrupt_trigged_by_pwm"
+                "name": "pwm_trigger_gpio_interrupt",
+                "resourceId": "/pwm_trigger_gpio_interrupt"
             }
+        },
+        {
+            "name": "encoder_ctrl_led_brightness",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "encoder_ctrl_led_brightness",
+                "resourceId": "/encoder_ctrl_led_brightness"
+            },
+            "connections": [
+                {
+                    "name": "Texas Instruments XDS110 USB Debug Probe",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M0P",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
