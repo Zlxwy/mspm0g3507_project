@@ -108,7 +108,7 @@ int main(void)
 
     OLED_Init();
     OLED_Printf(0, 0, OLED_8X16, "GPIO-INT-QEI"); // 试验标题
-    OLED_Printf(0, 16, OLED_8X16, "Cnt: 00000"); // 编码器计数
+    OLED_Printf(0, 16, OLED_8X16, "Cnt: +00000"); // 编码器计数
     OLED_Printf(0, 32, OLED_8X16, "Dir: "); // 编码器转动方向
     OLED_Update();
 
@@ -117,7 +117,7 @@ int main(void)
 
     while (true) {
         /*显示编码器计数值*/
-        OLED_Printf(0, 16, OLED_8X16, "Cnt: %d     ", EncoderCount);
+        OLED_Printf(0, 16, OLED_8X16, "Cnt: %+06d", EncoderCount);
 
         /*显示编码器转动方向*/
         if (isEncoderRotatingForward != false) {
@@ -125,7 +125,7 @@ int main(void)
         } else {
             OLED_Printf(0, 32, OLED_8X16, "Dir: Down   ");
         }
-
+        
         /*更新OLED显示*/
         OLED_Update();
         

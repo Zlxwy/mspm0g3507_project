@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.3                      
 ******************************************************************************
->> Linked Sun Jun 22 00:53:13 2025
+>> Linked Sun Jun 22 12:47:18 2025
 
 OUTPUT FILE NAME:   <gpio_interrupt_encoder_measurement.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00002f39
@@ -135,16 +135,16 @@ section   page    origin      length       input sections
                   000030e0    000005f0     OLED_Data.o (.rodata.OLED_F8x16)
                   000036d0    0000023a     OLED_Data.o (.rodata.OLED_F6x8)
                   0000390a    0000022b     OLED_Data.o (.rodata.OLED_CF16x16)
-                  00003b35    0000000b     main.o (.rodata.str1.8154729771448623357.1)
+                  00003b35    0000000b     main.o (.rodata.str1.18227636981041470289.1)
                   00003b40    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
                   00003c41    00000011            : _printfi.c.obj (.rodata.str1.10348868589481759720.1)
                   00003c52    00000011            : _printfi.c.obj (.rodata.str1.15363888844622738466.1)
                   00003c63    0000000d     main.o (.rodata.str1.12180500075719773345.1)
                   00003c70    0000000d     main.o (.rodata.str1.15159059442110792349.1)
-                  00003c7d    0000000d     main.o (.rodata.str1.18227636981041470289.1)
-                  00003c8a    0000000d     main.o (.rodata.str1.2846389346932560359.1)
-                  00003c97    00000006     main.o (.rodata.str1.17100691992556644108.1)
-                  00003c9d    00000003     --HOLE-- [fill = 0]
+                  00003c7d    0000000d     main.o (.rodata.str1.2846389346932560359.1)
+                  00003c8a    0000000c     main.o (.rodata.str1.8154729771448623357.1)
+                  00003c96    00000006     main.o (.rodata.str1.17100691992556644108.1)
+                  00003c9c    00000004     --HOLE-- [fill = 0]
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -175,11 +175,11 @@ MODULE SUMMARY
        Module                         code    ro data   rw data
        ------                         ----    -------   -------
     .\
-       main.o                         288     69        5      
+       main.o                         288     68        5      
        ti_msp_dl_config.o             208     0         0      
        startup_mspm0g350x_ticlang.o   6       192       0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         502     261       5      
+       Total:                         502     260       5      
                                                                
     .\hardware\OLED\
        OLED.o                         3992    0         1024   
@@ -250,7 +250,7 @@ MODULE SUMMARY
        Stack:                         0       0         512    
        Linker Generated:              0       43        0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   12294   3240      1553   
+       Grand Total:                   12294   3239      1553   
 
 
 LINKER GENERATED COPY TABLES
