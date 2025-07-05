@@ -21,7 +21,7 @@ This project demonstrates how to receive data from the **WitMotion JY901S 9-axis
 
 ## 🧰 Devices Used
 
-* **Lichuang DMXing Core Board**, based on **MSPM0G3507 (48-pin)**
+* **立创地猛星 Core Board**, based on **MSPM0G3507 (48-pin)**
 * **WitMotion JY901S** 9-axis attitude sensor
 * **OLED screen** (I2C, 128×64 pixels, 4-wire)
 * **J-Link OB debugger**

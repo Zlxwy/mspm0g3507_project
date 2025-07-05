@@ -22,6 +22,9 @@
     * Assigned Pin: <u>14</u>
 ### UART
 * UART Name: <u>UART_CH340</u>
+- PinMux
+  * UART Peripheral: <u>UART0</u>
+  * RX Pin: <u>PA11</u>
 - Basic Configuration
   - UART Initialization Configuration
     * Target Baud Rate: <u>115200</u>
@@ -41,9 +44,6 @@
     * Transfer Mode: <u>Repeat Single</u>
     * Source Address Increment: <u>Do not change address after each transfer</u>
     * Destination Address Increment: <u>Increment</u>
-- PinMux
-  * UART Peripheral: <u>UART0</u>
-  * RX Pin: <u>PA11</u>
 ### 调试配置
 - SEGGER J-Link Emulator
 

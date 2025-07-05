@@ -42,10 +42,6 @@
 #define RX_LEN_MAX  (33*2) // 一个数据包有33个字节，长度66的数组就刚好接收完两个数据包
 volatile uint8_t rxData[RX_LEN_MAX]; // 接收数组，存放JY901S的原始数据
 
-float angleX, angleY, angleZ; // 角度数据 (分别对应roll, pitch, yaw)
-float gyroX, gyroY, gyroZ; // 角速度数据
-float accX, accY, accZ; // 角加速度数据
-
 int main(void)
 {
     SYSCFG_DL_init();
@@ -71,15 +67,13 @@ int main(void)
                     FrameHeadIndex[0] = i + 11*0; // 获取角加速度数据在数组中的索引 (0x55 0x51)
                     FrameHeadIndex[1] = i + 11*1; // 获取角速度数据在数组中的索引 (0x55 0x52)
                     FrameHeadIndex[2] = i + 11*2; // 获取角度数据在数组中的索引 (0x55 0x53)
-                    hasFoundFrameHead = true; // 已找到帧头，下一次循环就不会在进入 if(!hasFoundFrameHead) 了
+                    hasFoundFrameHead = true; // 已找到帧头，除非帧头丢失，否则之后的循环就不会再进入 if(!hasFoundFrameHead) 了
                     break; // 跳出 for 循环
-                } else { // 如果没有找到帧头，则继续寻找
-                    continue; // 跳过本次循环，继续下一次循环
                 }
             }
-        } else { // 如果已经找到帧头
-            if (rxData[FrameHeadIndex[0]] != 0x55) { // 若帧头丢失
-                hasFoundFrameHead = false; // 则重新寻找帧头
+        } else { // 如果 hasFoundFrameHead 为 true
+            if (rxData[FrameHeadIndex[0]] != 0x55) { // 但帧头并不符合（帧头丢失）
+                hasFoundFrameHead = false; // 将 hasFoundFrameHead 置 false ，重新寻找帧头
                 continue; // 重新进入 while (true) 循环，不会执行以下代码
             }
 
@@ -97,26 +91,26 @@ int main(void)
             int16_t angleZ_int16 = rxData[FrameHeadIndex[2]+6] | (rxData[FrameHeadIndex[2]+7]<<8);
 
             /*计算出角加速度数据（单位：g，约9.8m/s^2）*/
-            accX = (float)accX_int16 * 16.0 / 32768.0;
-            accY = (float)accY_int16 * 16.0 / 32768.0;
-            accZ = (float)accZ_int16 * 16.0 / 32768.0;
+            float accX_float = (float)accX_int16 * 16.0 / 32768.0; // roll
+            float accY_float = (float)accY_int16 * 16.0 / 32768.0; // pitch
+            float accZ_float = (float)accZ_int16 * 16.0 / 32768.0; // yaw
             /*计算出角速度数据（单位：度每秒）*/
-            gyroX = (float)gyroX_int16 * 2000.0 / 32768.0;
-            gyroY = (float)gyroY_int16 * 2000.0 / 32768.0;
-            gyroZ = (float)gyroZ_int16 * 2000.0 / 32768.0;
+            float gyroX_float = (float)gyroX_int16 * 2000.0 / 32768.0;
+            float gyroY_float = (float)gyroY_int16 * 2000.0 / 32768.0;
+            float gyroZ_float = (float)gyroZ_int16 * 2000.0 / 32768.0;
             /*计算出角度数据（单位：度）*/
-            angleX = (float)angleX_int16 * 180.0 / 32768.0;
-            angleY = (float)angleY_int16 * 180.0 / 32768.0;
-            angleZ = (float)angleZ_int16 * 180.0 / 32768.0;
+            float angleX_float = (float)angleX_int16 * 180.0 / 32768.0;
+            float angleY_float = (float)angleY_int16 * 180.0 / 32768.0;
+            float angleZ_float = (float)angleZ_int16 * 180.0 / 32768.0;
 
-            /*显示角度数据（带正负号，3位整数位，2位小数位）*/
+            /*显示角度数据（带正负号，(8-1-1-3=3)位整数位，3位小数位）*/
             OLED_ClearArea(0, 10, 128, 54);
-            OLED_Printf(0, 10, OLED_6X8, "Roll:  %+5.3f", angleX); // roll
-            OLED_Printf(0, 19, OLED_6X8, "Pitch: %+5.3f", angleY); // pitch
-            OLED_Printf(0, 28, OLED_6X8, "Yaw:   %+5.3f", angleZ); // yaw
-            OLED_Printf(0, 37, OLED_6X8, "GyroX: %+5.3f", gyroX);
-            OLED_Printf(0, 46, OLED_6X8, "GyroY: %+5.3f", gyroY);
-            OLED_Printf(0, 55, OLED_6X8, "GyroZ: %+5.3f", gyroZ);
+            OLED_Printf(0, 10, OLED_6X8, "Roll:  %+8.3f", angleX_float); // roll
+            OLED_Printf(0, 19, OLED_6X8, "Pitch: %+8.3f", angleY_float); // pitch
+            OLED_Printf(0, 28, OLED_6X8, "Yaw:   %+8.3f", angleZ_float); // yaw
+            OLED_Printf(0, 37, OLED_6X8, "GyroX: %+8.3f", gyroX_float);
+            OLED_Printf(0, 46, OLED_6X8, "GyroY: %+8.3f", gyroY_float);
+            OLED_Printf(0, 55, OLED_6X8, "GyroZ: %+8.3f", gyroZ_float);
             OLED_Update();
         }
         delay_ms(10);

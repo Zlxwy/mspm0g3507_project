@@ -33,12 +33,21 @@
             ]
         },
         {
-            "name": "led_matrix_32x32_with_74ic",
+            "name": "led_matrix_32x32_disp",
             "type": "ccs-debug",
             "request": "launch",
             "projectInfo": {
-                "name": "led_matrix_32x32_with_74ic",
-                "resourceId": "/led_matrix_32x32_with_74ic"
+                "name": "led_matrix_32x32_disp",
+                "resourceId": "/led_matrix_32x32_disp"
+            }
+        },
+        {
+            "name": "led_matrix_32x32_ctrler",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "led_matrix_32x32_ctrler",
+                "resourceId": "/led_matrix_32x32_ctrler"
             },
             "connections": [
                 {
