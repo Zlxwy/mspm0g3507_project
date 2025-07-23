@@ -67,7 +67,8 @@ int main(void)
                     FrameHeadIndex[0] = i + 11*0; // 获取角加速度数据在数组中的索引 (0x55 0x51)
                     FrameHeadIndex[1] = i + 11*1; // 获取角速度数据在数组中的索引 (0x55 0x52)
                     FrameHeadIndex[2] = i + 11*2; // 获取角度数据在数组中的索引 (0x55 0x53)
-                    hasFoundFrameHead = true; // 已找到帧头，除非帧头丢失，否则之后的循环就不会再进入 if(!hasFoundFrameHead) 了
+                    hasFoundFrameHead = true; // 已找到帧头在 rxData 中的索引
+                    // 除非帧头丢失，否则之后的循环就不会再进入 if(!hasFoundFrameHead) 了
                     break; // 跳出 for 循环
                 }
             }
