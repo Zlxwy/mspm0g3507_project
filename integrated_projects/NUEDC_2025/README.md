@@ -21,9 +21,6 @@
 - J-Link OB 调试器
 
 ## 配置
-### Switch Board or Device
-- 在 syscfg 右下角点击 **SWITCH** ，选择封装为 **LQFP-48** ，点击 **Confirm** 确认。
-- 左侧栏 **Project Configuration** 会有一个报错、一个警告，在 **Select Device** 重新选择一下芯片型号，忽略掉警告就行。
 ### GPIO (1 Added)
 * Name: <u>GPIO_OLED</u>
   - Group Pins (2 added)
