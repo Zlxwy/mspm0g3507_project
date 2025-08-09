@@ -56,7 +56,10 @@ volatile bool isEncoderRotatingForward = false; // 编码器旋转方向
 
 
 void GROUP1_IRQHandler(void) {
-    uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN); // 获取GPIOA端口的待处理中断
+    uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(
+        GPIO_ENCODER_PORT,
+        GPIO_ENCODER_PHASE_A_PIN | GPIO_ENCODER_PHASE_B_PIN
+    ); // 获取GPIOA端口的待处理中断
 
     if((gpioA & GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) { // 如果是A相引脚中断
         if (DL_GPIO_readPins(GPIO_ENCODER_PORT, GPIO_ENCODER_PHASE_A_PIN) == GPIO_ENCODER_PHASE_A_PIN) { // 如果此时A相引脚高电平
