@@ -1,0 +1,13 @@
+"./main.o"
+"./ti_msp_dl_config.o"
+"./startup_mspm0g350x_ticlang.o"
+"./hardware/CTRL/ctrl.o"
+"./hardware/DELAY/delay.o"
+"./hardware/ENCODER/encoder.o"
+"./hardware/LX225/lx225.o"
+"./hardware/MOTO/moto.o"
+"./hardware/OLED/OLED.o"
+"./hardware/OLED/OLED_Data.o"
+-l"./device_linker.cmd"
+-ldevice.cmd.genlibs
+-llibc.a
